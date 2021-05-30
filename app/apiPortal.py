@@ -148,14 +148,18 @@ thread.start_new_thread(check_Lic, (43200, ))
 def homePage():
     #print '\nIn sessionMgr, Lic: {}\n'.format(appPaaS.licCheck)
     dicRet = appPaaS.preProcessRequest(request, system="PaaS")
+    print "*******dicRet********"
+    print dicRet
     #reserved for user ID check
     #reUser_id = request.args.get("uid")
     mesg = "<h1 style='color:blue'>sapido-License check failed!</h1>"
-    if(appPaaS.licCheck == 0 ):
+    if appPaaS.licCheck == 0:
         mesg = "<h1 style='color:blue'>sapido-PaaS!</h1>"
 
+    print "~~~~mesg~~~~"
+    print mesg
+
     dicRet["message"] = mesg    
-    dicRet["APIS"] = "{} {}".format(request.method,request.path) 
     dicRet["Response"] = "ok" 
     return jsonify( **dicRet)
 # }}}

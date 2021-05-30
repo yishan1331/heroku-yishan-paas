@@ -236,8 +236,8 @@ def get_time():
 # {{{ def preProcessRequest(request,companyUuid=None,dappId=None)
 def preProcessRequest(request,system=""):
     err_msg = "ok"
-    # print "..............................................................................................."
-    # print datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
+    print "..............................................................................................."
+    print datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
     # print "~~~~os.getpid()~~~~"
     # print os.getpid()
     targetApi = "{} {}".format(request.method,request.path)

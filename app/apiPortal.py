@@ -169,7 +169,7 @@ def homePage():
 
 
 @appPaaS.route("/test")
-def homePage():
+def test():
     dicRet = {}
     mesg = "<h1 style='color:blue'>sapido-PaaS!</h1>"
 

@@ -9,6 +9,7 @@ appPaaS = Flask('YishanPaaS')
 
 @appPaaS.route("/")
 def homePage():
+    dicRet = {}
     mesg = "<h1 style='color:blue'>sapido-PaaS!</h1>"
     dicRet["message"] = mesg    
     dicRet["APIS"] = "{} {}".format(request.method,request.path) 

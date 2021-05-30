@@ -288,9 +288,11 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
                 POOL = redis.ConnectionPool(host=dicConfig.get(RedisIp),\
                                             port=dicConfig.get(RedisPort),\
                                             password=dicConfig.get(RedisPassword))
-                dbRedis = redis.Redis(connection_pool=POOL)
+                dbRedis = redis.Redis(connection_pool=POOL,health_check_interval=30)
                 return dbRedis,None,None
             except Exception as e:
+                print "~~~connect redis error~~~~~"
+                print e
                 err_msg = appPaaS.catch_exception(e,sys.exc_info(),system)
                 return None,None,err_msg
     except Exception as e:

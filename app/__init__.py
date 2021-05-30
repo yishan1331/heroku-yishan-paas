@@ -237,6 +237,15 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
     MssqlPort = "DBMSSQLPort_"+suffix
     MssqlDbname = "DBMSSQLDbname_"+suffix
 
+    print "~~~PostgresqlUser~~~"
+    print PostgresqlUser
+    print "~~~PostgresqlPassword~~~"
+    print PostgresqlPassword
+    print "~~~PostgresqlIP~~~"
+    print PostgresqlIP
+    print "~~~PostgresqlPort~~~"
+    print PostgresqlPort
+
     try:
         if forRawData == 'mysql':
             dbUri = 'mysql+pymysql://{}:{}@{}:{}/{}?charset=utf8mb4'.format( \
@@ -293,7 +302,6 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
     try:
         print "~~~dbUri~~~"
         print dbUri
-        return
         if echo:
             dbEngine = create_engine(dbUri,encoding='utf-8',echo=True)
             # dbEngine = create_engine('mssql+pymssql://sd:DmakerSQL@2020@172.16.2.57:1433/sapidoERP?charset=utf8',encoding='utf-8',echo=True)

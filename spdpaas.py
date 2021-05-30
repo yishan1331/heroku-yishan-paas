@@ -4,6 +4,7 @@ print "-----into spdpaas.py-----"
 # appSapido = appPaaS
 # import app.apiPortal
 
+from flask import Flask, request, jsonify, Blueprint
 appPaaS = Flask('YishanPaaS')
 
 @appPaaS.route("/")

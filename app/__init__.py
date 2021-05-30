@@ -198,6 +198,8 @@ from modules import check_dbconnect_success
 #=======================================================
 # {{{ def getDbSessionType()
 def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, driver="pyodbc", echo=False):
+    print "~~~system~~~"
+    print system
     if system is None: return None,None,"No system"
 
     suffix = system
@@ -206,6 +208,9 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
             suffix = system+"_"+str(specified)
     except Exception as e:
         return None,None,"指定資料庫必須為數字，數字內容請詢問系統維護者"
+    
+    print "~~~suffix~~~"
+    print suffix
 
     #MYSQL
     MysqlUser = "DBMYSQLUser_"+suffix
@@ -288,6 +293,7 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
     try:
         print "~~~dbUri~~~"
         print dbUri
+        return
         if echo:
             dbEngine = create_engine(dbUri,encoding='utf-8',echo=True)
             # dbEngine = create_engine('mssql+pymssql://sd:DmakerSQL@2020@172.16.2.57:1433/sapidoERP?charset=utf8',encoding='utf-8',echo=True)

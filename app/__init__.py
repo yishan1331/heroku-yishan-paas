@@ -273,22 +273,20 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
                                 dicConfig.get(MssqlDbname))
                                 # dbName)
         elif forRawData == 'redis':
-            print "~~~RedisIp~~~"
-            print RedisIp
-            print dicConfig.get(RedisIp)
-            print "~~~RedisPort~~~"
-            print RedisPort
-            print dicConfig.get(RedisPort)
-            print "~~~RedisPassword~~~"
-            print RedisPassword
-            print dicConfig.get(RedisPassword)
             try:
                 #採用此方式connect無需再特地disconnect，會自動disconnect 
                 #not need to do -> dbRedis.connection_pool.disconnect()
-                POOL = redis.ConnectionPool(host=dicConfig.get(RedisIp),\
-                                            port=dicConfig.get(RedisPort),\
-                                            password=dicConfig.get(RedisPassword))
-                dbRedis = redis.Redis(connection_pool=POOL,health_check_interval=30)
+                # POOL = redis.ConnectionPool(host=dicConfig.get(RedisIp),\
+                #                             port=dicConfig.get(RedisPort),\
+                #                             password=dicConfig.get(RedisPassword))
+                # dbRedis = redis.Redis(connection_pool=POOL,health_check_interval=30)
+                dbUri = 'redis://:{}@{}:{}'.format(\
+                                dicConfig.get(RedisPassword)\
+                                dicConfig.get(RedisIp),\
+                                dicConfig.get(RedisPort))
+                print "~~~redis dbUri~~~"
+                print dbUri
+                dbRedis = redis.from_url(dbUri)
                 return dbRedis,None,None
             except Exception as e:
                 print "~~~connect redis error~~~~~"

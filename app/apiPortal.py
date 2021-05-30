@@ -159,8 +159,10 @@ def homePage():
     print "~~~~mesg~~~~"
     print mesg
 
-    dicRet["message"] = mesg    
-    dicRet["Response"] = "ok" 
+    dicRet["message"] = mesg   
+    dicRet["Response"] = "ok"
+    print "$$$$$$dicRet$$$$$"
+    print dicRet
     return jsonify( **dicRet)
 # }}}
 #=======================================================

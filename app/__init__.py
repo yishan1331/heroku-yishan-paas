@@ -354,6 +354,8 @@ celery = make_celery(appPaaS,dicConfig)
 print "~~~~celery~~~~"
 print celery
 
+print "~~~~sys._getframe(1).f_globals.get('__name__')~~~~"
+print sys._getframe(1).f_globals.get('__name__')
 # print "~~~sys.getrecursionlimit()~~~"
 # print sys.getrecursionlimit()
 

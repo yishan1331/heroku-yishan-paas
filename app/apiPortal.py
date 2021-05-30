@@ -232,14 +232,8 @@ def get_time():
     '''
     #}}}
     dicRet = appPaaS.preProcessRequest(request, system="PaaS")
-    try:
-        dicRet['time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[::]
-        err_msg = "ok" 
-
-    except Exception as e:
-        err_msg = appPaaS.catch_exception(e,sys.exc_info(),"PaaS")
-
-    dicRet["Response"] = err_msg
+    dicRet['time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[::]
+    dicRet["Response"] = "ok"
     return jsonify( **dicRet)
 # }}}
 

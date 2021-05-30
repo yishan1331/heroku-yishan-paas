@@ -167,6 +167,18 @@ def homePage():
 # }}}
 #=======================================================
 
+
+@appPaaS.route("/test")
+def homePage():
+    dicRet = {}
+    mesg = "<h1 style='color:blue'>sapido-PaaS!</h1>"
+
+    dicRet["message"] = mesg   
+    dicRet["Response"] = "ok"
+    print "$$$$$$dicRet$$$$$"
+    print dicRet
+    return jsonify( **dicRet)
+
 #test for queue
 # my_queue = Queue.Queue()
 # @appPaaS.route("/TestThreadQueue/<number>")

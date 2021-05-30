@@ -346,7 +346,6 @@ def per_request_postprocess(Response):
             dic = { "OperationTime": "{:.3f}".format(timeCost),
                     "THISTIME":nowTime,
                     "APIS": "{} {}".format(request.method,request.path),
-                    "System":
                     "BytesTransferred":len(Response.data)}
             # http://stackoverflow.com/questions/22274137/how-do-i-alter-a-Response-in-flask-in-the-after-request-function
             dicRet.update(dic)

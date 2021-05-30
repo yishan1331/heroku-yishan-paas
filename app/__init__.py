@@ -210,14 +210,14 @@ def _readConfig():
     except Exception as e:
         print "~~~~_readConfig error~~~~"
         print e
-        err_msg = appPaaS.catch_exception(e,sys.exc_info(),"PaaS")
+        # err_msg = appPaaS.catch_exception(e,sys.exc_info(),"PaaS")
 
     finally:
         return dicConfig
 # }}}
 dicConfig = _readConfig()
 
-from modules import check_dbconnect_success
+# from modules import check_dbconnect_success
 #=======================================================
 # DB Session Generation process  
 #=======================================================
@@ -306,7 +306,7 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
                 err_msg = appPaaS.catch_exception(e,sys.exc_info(),system)
                 return None,None,err_msg
     except Exception as e:
-        err_msg = appPaaS.catch_exception(e,sys.exc_info(),system)
+        # err_msg = appPaaS.catch_exception(e,sys.exc_info(),system)
         return None,None,err_msg
 
     try:
@@ -335,7 +335,7 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
     
     except Exception as e:
         check_connect_success = False
-        err_msg = appPaaS.catch_exception(e, sys.exc_info(), system)
+        # err_msg = appPaaS.catch_exception(e, sys.exc_info(), system)
         if re.search(r'None.',dbUri):
             return None,None,"資料庫連結url有錯誤"
         

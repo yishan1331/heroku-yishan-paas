@@ -176,30 +176,27 @@ def _readConfig():
         print "~~~~diff_system~~~~~"
         print diff_system
 
-        dicConfig = {  'log_path': LOGPATH, \
-            'key_loc': KEY_LOC, \
-            'aes_key': AES_KEY,\
-            'code'   : CODE,    \
-            'timeout'  : TIMEOUTVALUE,  \
-            'celery_broker'  : CELERY_BROKER,  \
-            'celery_result_backend'  : CELERY_RESULT_BACKEND,  \
-            'DBMYSQLIp_PaaS' : DBMYSQLIp, \
-            'DBMYSQLPort_PaaS' : DBMYSQLPort,  \
-            'DBMYSQLUser_PaaS' : DBMYSQLUser,  \
-            'DBMYSQLPassword_PaaS' : DBMYSQLPassword,  \
-            'DBMYSQLDbname_PaaS' : DBMYSQLDbname_PaaS,  \
-            'DBMYSQLIp_APIDOC' : DBMYSQLIp, \
-            'DBMYSQLPort_APIDOC' : DBMYSQLPort,  \
-            'DBMYSQLUser_APIDOC' : DBMYSQLUser,  \
-            'DBMYSQLPassword_APIDOC' : DBMYSQLPassword,  \
-            'DBMYSQLDbname_APIDOC' : DBMYSQLDbname_APIDOC,  \
-            'DBPOSTGRESIp' : DBPOSTGRESIp, \
-            'DBPOSTGRESPort' : DBPOSTGRESPort,  \
-            'DBPOSTGRESUser' : DBPOSTGRESUser,  \
-            'DBPOSTGRESPassword' : DBPOSTGRESPassword,  \
-            'DBREDISIp' : DBREDISIp,  \
-            'DBREDISPort' : DBREDISPort,  \
-            'DBREDISPassword' : DBREDISPassword,  \
+        dicConfig = { 
+            'aes_key': AES_KEY,
+            'celery_broker'  : CELERY_BROKER,
+            'celery_result_backend'  : CELERY_RESULT_BACKEND,
+            'DBMYSQLIp_PaaS' : DBMYSQLIp,
+            'DBMYSQLPort_PaaS' : DBMYSQLPort,
+            'DBMYSQLUser_PaaS' : DBMYSQLUser,
+            'DBMYSQLPassword_PaaS' : DBMYSQLPassword,
+            'DBMYSQLDbname_PaaS' : DBMYSQLDbname_PaaS,
+            'DBMYSQLIp_APIDOC' : DBMYSQLIp,
+            'DBMYSQLPort_APIDOC' : DBMYSQLPort,
+            'DBMYSQLUser_APIDOC' : DBMYSQLUser,
+            'DBMYSQLPassword_APIDOC' : DBMYSQLPassword,
+            'DBMYSQLDbname_APIDOC' : DBMYSQLDbname_APIDOC,
+            'DBPOSTGRESIp' : DBPOSTGRESIp,
+            'DBPOSTGRESPort' : DBPOSTGRESPort,
+            'DBPOSTGRESUser' : DBPOSTGRESUser,
+            'DBPOSTGRESPassword' : DBPOSTGRESPassword,
+            'DBREDISIp' : DBREDISIp,
+            'DBREDISPort' : DBREDISPort,
+            'DBREDISPassword' : DBREDISPassword
         }
 
         dicConfig.update(diff_system)

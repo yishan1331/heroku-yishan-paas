@@ -237,15 +237,6 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
     MssqlPort = "DBMSSQLPort_"+suffix
     MssqlDbname = "DBMSSQLDbname_"+suffix
 
-    print "~~~PostgresqlUser~~~"
-    print PostgresqlUser
-    print "~~~PostgresqlPassword~~~"
-    print PostgresqlPassword
-    print "~~~PostgresqlIP~~~"
-    print PostgresqlIP
-    print "~~~PostgresqlPort~~~"
-    print PostgresqlPort
-
     try:
         if forRawData == 'mysql':
             dbUri = 'mysql+pymysql://{}:{}@{}:{}/{}?charset=utf8mb4'.format( \

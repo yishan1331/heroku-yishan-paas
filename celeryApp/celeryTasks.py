@@ -290,6 +290,8 @@ def apirecord_hash_num_init():
             dbRedis.set("apirecord_hash_num", 10)
 
     except Exception as e:
+        print "@@@@@apirecord_hash_num_init@@@@@"
+        print apirecord_hash_num_init
         appPaaS.catch_exception(e, sys.exc_info(), "PaaS")
 
 #=======================================================

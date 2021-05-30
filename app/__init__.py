@@ -367,7 +367,7 @@ else:
     OAUTH2_ENGINE = None
     OAUTH2_DEREDIS = None
     authorization = None
-    import apiPortal
+    # import apiPortal
 
 __all__ = [
     'sys', 'os', 'traceback', 're',

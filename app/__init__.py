@@ -280,9 +280,9 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
                 #                             port=dicConfig.get(RedisPort),\
                 #                             password=dicConfig.get(RedisPassword))
                 # dbRedis = redis.Redis(connection_pool=POOL,health_check_interval=30)
-                dbUri = 'redis://:{}@{}:{}'.format(\
-                                dicConfig.get(RedisPassword)\
-                                dicConfig.get(RedisIp),\
+                dbUri = 'redis://:{}@{}:{}'.format(
+                                dicConfig.get(RedisPassword),
+                                dicConfig.get(RedisIp),
                                 dicConfig.get(RedisPort))
                 print "~~~redis dbUri~~~"
                 print dbUri

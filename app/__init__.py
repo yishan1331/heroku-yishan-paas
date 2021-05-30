@@ -220,15 +220,15 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
     MysqlDbname = "DBMYSQLDbname_"+suffix
     
     #POSTGRES
-    PostgresqlUser = "DBPOSTGRESUser"
-    PostgresqlPassword = "DBPOSTGRESPassword"
-    PostgresqlIP = "DBPOSTGRESIp"
-    PostgresqlPort = "DBPOSTGRESPort"
+    PostgresqlUser = "DBPOSTGRESUser_"+suffix
+    PostgresqlPassword = "DBPOSTGRESPassword_"+suffix
+    PostgresqlIP = "DBPOSTGRESIp_"+suffix
+    PostgresqlPort = "DBPOSTGRESPort_"+suffix
 
     #Redis
-    RedisIp = "DBREDISIp"
-    RedisPort = "DBREDISPort"
-    RedisPassword = "DBREDISPassword"
+    RedisIp = "DBREDISIp_"+suffix
+    RedisPort = "DBREDISPort_"+suffix
+    RedisPassword = "DBREDISPassword_"+suffix
 
     #Mssql
     MssqlUser = "DBMSSQLUser_"+suffix

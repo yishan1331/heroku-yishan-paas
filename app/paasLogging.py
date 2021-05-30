@@ -84,7 +84,7 @@ def applogger(app):
 
     # systems["system_logger"] = {}
     for i in tempsystemlist:
-        local_variables["rotateLogFile_{}".format(i)] = os.path.join(APP_DIR,"log_%s"%(app.name))
+        local_variables["rotateLogFile_{}".format(i)] = os.path.join(ROOT_DIR,"log_%s"%(app.name))
         
         #不同系統建立不同logger
         systems["logging{}".format(i)] = logging.getLogger("logging{}".format(i))

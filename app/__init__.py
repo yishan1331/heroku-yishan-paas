@@ -91,7 +91,7 @@ def _readConfig():
     dicConfig = {}
     try:
         # print "now in readConfig()"
-        CONFPATH = os.path.join(APP_DIR,"config.conf")
+        CONFPATH = os.path.join(ROOT_DIR,"config.conf")
         print "~~~CONFPATH~~~~"
         print CONFPATH
 

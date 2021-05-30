@@ -256,42 +256,10 @@ def preProcessRequest(request,system=""):
     err_msg = "ok"
     print "..............................................................................................."
     print datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
-    # print "~~~~os.getpid()~~~~"
-    # print os.getpid()
-    targetApi = "{} {}".format(request.method,request.path)
-    #logging.getLogger('fappYott').info("__[0824_request]: {}".format(request))
-
-    #Wei@04132017 block for temperally not usage    
-    #if companyUuid:
-    #    #check special char in companyUUID
-    #    ics = set('[`~!@#$%^&*()_+-={}<>,.?";:|\']+$').intersection(companyUuid)
-    #    if ics:
-    #        err_msg = "company_uuid={}, /w invalid chars {}".format(companyUuid,ics)
-
-    #if dappId:
-    #    #check special char in dappID
-    #    ics = set('`~/\?%*:|"<> ').intersection(dappId)
-    #    if ics:
-    #        err_msg = "dapp_uuid={}, /w invalid chars {}".format(dappId,ics)
-
-    #    #if err_msg == "ok":
-    #    """ preflight requests issue, http://jiraccma.itri.org.tw:8080/browse/SAPIDOSYSTEM-23
-    #    while handle DEL_BULKSAPIDOSYSTEM from javascript client code,
-    #    flask found that `request.args` contained nothing,
-    #    but expected values found at `request.form`
-    #    and also `request.querystring` contain nothing
-    #    """
-    #W@03092017 block for testing new feature
-    #if request.args:
-    #    reqArgOk,err_msg = appPaaS.checkIfRequestArgsValid(request.args)
-    #else:
-    #    reqArgOk,err_msg = appPaaS.checkIfRequestArgsValid(request.form)
-    #if err_msg == "ok":
-    #reqSigOk,err_msg = appPaaS.verifyRequestSignature(request)
 
     dicRet = {}
-    dicRet["APIS"] = targetApi
-    dicRet["Response"] = err_msg
+    # dicRet["APIS"] = "{} {}".format(request.method,request.path)
+    # dicRet["Response"] = err_msg
     dicRet["System"] = system
     return dicRet
 # }}}
@@ -377,6 +345,8 @@ def per_request_postprocess(Response):
             timeCost = time.time()-request.request_start_time_
             dic = { "OperationTime": "{:.3f}".format(timeCost),
                     "THISTIME":nowTime,
+                    "APIS": "{} {}".format(request.method,request.path),
+                    "System":
                     "BytesTransferred":len(Response.data)}
             # http://stackoverflow.com/questions/22274137/how-do-i-alter-a-Response-in-flask-in-the-after-request-function
             dicRet.update(dic)

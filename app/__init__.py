@@ -333,6 +333,7 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
     
     except Exception as e:
         check_connect_success = False
+        err_msg = e
         # err_msg = appPaaS.catch_exception(e, sys.exc_info(), system)
         if re.search(r'None.',dbUri):
             return None,None,"資料庫連結url有錯誤"

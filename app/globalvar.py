@@ -16,14 +16,15 @@ Description: global variable
 ==============================================================================
 """
 
-SERVERIP = "serverCZ"
+SERVERIP = "serverYS"
 
 #支援使用的系統列表
 SYSTEMLIST = {
     "server71": ["IOT","APIDOC"],
     "server75": ["SAPIDOSYSTEM","OQA","CRM","APIDOC"],
     "serverKSS": ["OQA","APIDOC"],
-    "serverCZ": ["CHUNZU","APIDOC"]
+    "serverCZ": ["CHUNZU","APIDOC"],
+    "serverYS": ["YS"]
 }
 
 #PaaS是否為container
@@ -45,25 +46,29 @@ XXXUSER = {
     "server71": ["@sapido@PaaS","AOItest"],
     "server75": ["@sapido@PaaS"],
     "serverKSS": ["@sapido@PaaS"],
-    "serverCZ": ["@sapido@PaaS"]
+    "serverCZ": ["@sapido@PaaS"],
+    "serverYS": ["@YS@PaaS"]
 }
 #各資料庫固定時間欄位
 CREATETIME = {
     "server71": {"mysql":"created_at","mssql":"created_at"},
     "server75": {"mysql":"createTime","mssql":"created_at"},
     "serverKSS": {"mysql":"createTime","mssql":"created_at"},
-    "serverCZ": {"mysql":"created_at","mssql":"created_at"}
+    "serverCZ": {"mysql":"created_at","mssql":"created_at"},
+    "serverYS": {"mysql":"created_at","mssql":"created_at"}
 }
 UPLOADTIME = {
     "server71": {"mysql":"updated_at","mssql":"update_at","postgres":"upload_at"},
     "server75": {"mysql":"lastUpdateTime","postgres":"upload_at","mssql":"update_at"},
     "serverKSS": {"mysql":"lastUpdateTime","postgres":"upload_at","mssql":"update_at"},
-    "serverCZ": {"mysql":"updated_at","mssql":"update_at","postgres":"upload_at"}
+    "serverCZ": {"mysql":"updated_at","mssql":"update_at","postgres":"upload_at"},
+    "serverYS": {"mysql":"updated_at","mssql":"update_at","postgres":"upload_at"}
 }
 MYSQL_USER_ID = {
     "server71": "user_id",
     "server75": "uID",
-    "serverCZ": "user_id"
+    "serverCZ": "user_id",
+    "serverYS": "user_id"
 }
 
 #logging模組要查看的log file列表
@@ -113,6 +118,14 @@ CONFIG = {
             "MYSQL":["Mysql_CHUNZU"],
             "POSTGRESQL":["Postgresql_CHUNZU"],
             "REDIS":["Redis_CHUNZU"],
+            "Email":"Email"
+        }
+    },
+    "serverYS": {
+        "YS":{
+            "MYSQL":["Mysql_YS"],
+            "POSTGRESQL":["Postgresql_YS"],
+            "REDIS":["Redis_YS"],
             "Email":"Email"
         }
     }

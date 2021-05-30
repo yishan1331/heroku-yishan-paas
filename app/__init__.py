@@ -286,6 +286,8 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
         return None,None,err_msg
 
     try:
+        print "~~~dbUri~~~"
+        print dbUri
         if echo:
             dbEngine = create_engine(dbUri,encoding='utf-8',echo=True)
             # dbEngine = create_engine('mssql+pymssql://sd:DmakerSQL@2020@172.16.2.57:1433/sapidoERP?charset=utf8',encoding='utf-8',echo=True)

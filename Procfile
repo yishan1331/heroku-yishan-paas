@@ -1,1 +1,1 @@
-web: gunicorn spdpaas:appSapido --log-file -
+web: gunicorn spdpaas:appPaaS --log-file -

@@ -1,6 +1,6 @@
 #assign app from sessionMgr
 from app import *
-appSapido = appPaaS
+# appSapido = appPaaS
 # import app.apiPortal
 
 # if __name__ == "__main__":

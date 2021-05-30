@@ -76,3 +76,4 @@ vine==1.3.0
 visitor==0.1.3
 webencodings==0.5.1
 Werkzeug==0.15.4
+-e ./Authlib-0.14.3

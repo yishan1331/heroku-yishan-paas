@@ -291,7 +291,7 @@ def apirecord_hash_num_init():
 
     except Exception as e:
         print "@@@@@apirecord_hash_num_init@@@@@"
-        print apirecord_hash_num_init
+        print e
         appPaaS.catch_exception(e, sys.exc_info(), "PaaS")
 
 #=======================================================

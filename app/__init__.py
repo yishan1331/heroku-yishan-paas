@@ -273,6 +273,12 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
                                 dicConfig.get(MssqlDbname))
                                 # dbName)
         elif forRawData == 'redis':
+            print "~~~RedisIp~~~"
+            print RedisIp
+            print "~~~RedisPort~~~"
+            print RedisPort
+            print "~~~RedisPassword~~~"
+            print RedisPassword
             try:
                 #採用此方式connect無需再特地disconnect，會自動disconnect 
                 #not need to do -> dbRedis.connection_pool.disconnect()

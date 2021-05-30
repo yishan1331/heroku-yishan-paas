@@ -231,9 +231,7 @@ def get_time():
     }
     '''
     #}}}
-    err_msg = "ok"
     dicRet = appPaaS.preProcessRequest(request, system="PaaS")
-    err_msg = dicRet["Response"]
     try:
         dicRet['time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[::]
         err_msg = "ok" 

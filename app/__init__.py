@@ -104,16 +104,16 @@ def _readConfig():
         CELERY_RESULT_BACKEND = FILECONFIG.get('Celery', 'result_backend')
 
         #PaaS預設資料庫的ip、port、user、password(MYSQL、POSTGRESQL、REDIS)
-        #MYSQL
-        DBMYSQLIp = FILECONFIG.get(CONFIG["SYSTEM"]["MYSQL"],'ip')
-        DBMYSQLPort = FILECONFIG.get(CONFIG["SYSTEM"]["MYSQL"],'port')
-        DBMYSQLUser = FILECONFIG.get(CONFIG["SYSTEM"]["MYSQL"],'user')
-        DBMYSQLPassword = FILECONFIG.get(CONFIG["SYSTEM"]["MYSQL"],'password')
-        #POSTGRESQL
-        DBPOSTGRESIp = FILECONFIG.get(CONFIG["SYSTEM"]["POSTGRESQL"],'ip')
-        DBPOSTGRESPort = FILECONFIG.get(CONFIG["SYSTEM"]["POSTGRESQL"],'port')
-        DBPOSTGRESUser = FILECONFIG.get(CONFIG["SYSTEM"]["POSTGRESQL"],'user')
-        DBPOSTGRESPassword = FILECONFIG.get(CONFIG["SYSTEM"]["POSTGRESQL"],'password')
+        # #MYSQL
+        # DBMYSQLIp = FILECONFIG.get(CONFIG["SYSTEM"]["MYSQL"],'ip')
+        # DBMYSQLPort = FILECONFIG.get(CONFIG["SYSTEM"]["MYSQL"],'port')
+        # DBMYSQLUser = FILECONFIG.get(CONFIG["SYSTEM"]["MYSQL"],'user')
+        # DBMYSQLPassword = FILECONFIG.get(CONFIG["SYSTEM"]["MYSQL"],'password')
+        # #POSTGRESQL
+        # DBPOSTGRESIp = FILECONFIG.get(CONFIG["SYSTEM"]["POSTGRESQL"],'ip')
+        # DBPOSTGRESPort = FILECONFIG.get(CONFIG["SYSTEM"]["POSTGRESQL"],'port')
+        # DBPOSTGRESUser = FILECONFIG.get(CONFIG["SYSTEM"]["POSTGRESQL"],'user')
+        # DBPOSTGRESPassword = FILECONFIG.get(CONFIG["SYSTEM"]["POSTGRESQL"],'password')
         #REDIS
         DBREDISIp = FILECONFIG.get(CONFIG["SYSTEM"]["REDIS"],'ip')
         DBREDISPort = FILECONFIG.get(CONFIG["SYSTEM"]["REDIS"],'port')
@@ -154,24 +154,25 @@ def _readConfig():
         diff_system = {}
         repeatconfig = ["ip","port","user","password","dbname"]
         #diff server ip
-        for key,value in CONFIG[SERVERIP].items():
-            for key2,value2 in value.items():
-                if key2 not in DBCONFIG.keys():
-                    for key3,value3 in FILECONFIG.items(key2):
-                        diff_system[key2+key3.capitalize()] = value3
+        for system,system_value in CONFIG[SERVERIP].items():
+            for add_ons,add_ons_value in system_value.items():
+                #判斷add_ons是否為資料庫，不是就直接寫進diff_system
+                if add_ons not in DBCONFIG.keys():
+                    for key3,value3 in FILECONFIG.items(add_ons):
+                        diff_system[add_ons+key3.capitalize()] = value3
                 else:
-                    for j in range(len(value2)):
+                    for j in range(len(add_ons_value)):
                         for i in repeatconfig:
-                            status,result = _getConfigParserDetails(FILECONFIG,value2[j],i)
+                            status,result = _getConfigParserDetails(FILECONFIG,add_ons_value[j],i)
                             if j == 0:
-                                this_key = DBCONFIG[key2]+i.capitalize()+"_"+key
+                                this_key = DBCONFIG[add_ons]+i.capitalize()+"_"+system
                             else:
-                                this_key = DBCONFIG[key2]+i.capitalize()+"_"+key+"_"+str(j+1)
+                                this_key = DBCONFIG[add_ons]+i.capitalize()+"_"+system+"_"+str(j+1)
 
                             if status:
                                 diff_system[this_key] = result
                             else:
-                                diff_system[this_key] = DEFAULT_DB_CONFIG[DBCONFIG[key2]+i.capitalize()]
+                                diff_system[this_key] = DEFAULT_DB_CONFIG[DBCONFIG[add_ons]+i.capitalize()]
 
         print "~~~~diff_system~~~~~"
         print diff_system
@@ -323,7 +324,7 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
                                     bind=dbEngine))
 
         doLoggerHandler = True
-        if forRawData == 'postgres' and dbName == "paas_dashboard":
+        if forRawData == 'postgres' and dbName == globalvar.PAAS_DASHBOARD_DBNAME.POSTGRES:
             doLoggerHandler = False
             
         check_connect_success,check_result = check_dbconnect_success(dbSessionType(), system, doLoggerHandler=doLoggerHandler)

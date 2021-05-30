@@ -194,10 +194,10 @@ class DatabaseLoggingHandler(logging.Handler):
             if (self.system is None) or (self.system == ""):
                 raise Exception("not set system")
 
-            if not retrieve_database_exist(system=self.system,dbName="paas_dashboard",forRawData="postgres")[0]:
-                create_database(self.system,"paas_dashboard",forRawData="postgres")
+            if not retrieve_database_exist(system=self.system,dbName=globalvar.PAAS_DASHBOARD_DBNAME.POSTGRES,forRawData="postgres")[0]:
+                create_database(self.system,globalvar.PAAS_DASHBOARD_DBNAME.POSTGRES,forRawData="postgres")
 
-            DbSessionRaw,metaRaw,engineRaw = appPaaS.getDbSessionType(dbName="paas_dashboard", system=self.system, forRawData="postgres")
+            DbSessionRaw,metaRaw,engineRaw = appPaaS.getDbSessionType(dbName=globalvar.PAAS_DASHBOARD_DBNAME.POSTGRES, system=self.system, forRawData="postgres")
             if not DbSessionRaw is None:
                 sessRaw = DbSessionRaw()
                 if self.system.lower() == "paas":
@@ -219,7 +219,7 @@ class DatabaseLoggingHandler(logging.Handler):
                 ]
 
                 if not retrieve_table_exist(metaRaw, tableName, self.system, doLoggerHandler=False):
-                    resultRaw ,mesgRaw = create_table(table_name=tableName, dbName="paas_dashboard", attrList=table_attr, table_comment=self.system.lower()+"_PaaS API日誌",doLoggerHandler=False,system=self.system)
+                    resultRaw ,mesgRaw = create_table(table_name=tableName, dbName=globalvar.PAAS_DASHBOARD_DBNAME.POSTGRES, attrList=table_attr, table_comment=self.system.lower()+"_PaaS API日誌",doLoggerHandler=False,system=self.system)
                     # print "~~~resultRaw~~~~"
                     # print resultRaw
                     # print "~~~mesgRaw~~~~"

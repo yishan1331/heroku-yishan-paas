@@ -80,7 +80,7 @@ def get_logtype(SYSTEM):
         for key,value in globalvar.LOGFILELIST.items():
             FileList[key] = []
             if key == "PaaS_LOG":
-                DbSessionRaw,metaRaw,engineRaw = appPaaS.getDbSessionType(dbName="paas_dashboard",forRawData="postgres",system="PaaS")
+                DbSessionRaw,metaRaw,engineRaw = appPaaS.getDbSessionType(dbName=globalvar.PAAS_DASHBOARD_DBNAME.POSTGRES,forRawData="postgres",system="PaaS")
                 if DbSessionRaw is None:
                     #表示連接資料庫有問題
                     dicRet["Response"] = engineRaw

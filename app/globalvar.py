@@ -29,6 +29,11 @@ SYSTEMLIST = {
 #PaaS是否為container
 ISCONTAINER = True
 CONTAINER_API_HTML = "API"
+
+PAAS_DASHBOARD_DBNAME = {
+    "MYSQL":"w4gs1cezebsazytb",
+    "POSTGRES":"de1rijvqmjhsgr",
+}
 #------------------------------------------------------
 #Wei@10022018 adding the if-else for customer check
 #For runnable version, the uid check for administor 

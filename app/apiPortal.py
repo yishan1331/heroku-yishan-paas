@@ -594,6 +594,7 @@ if sys._getframe(1).f_globals.get('__name__') == "spdpaas":
 # Only for IoT-chunzu system to do this action
 #=======================================================
 if "CHUNZU" in globalvar.SYSTEMLIST[globalvar.SERVERIP] and sys._getframe(1).f_globals.get('__name__') == "spdpaas":
+    pass
     #create device init key
     iot_redis_device_keys_init(selfUse=True)
 #=======================================================

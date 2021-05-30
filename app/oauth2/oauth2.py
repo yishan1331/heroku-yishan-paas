@@ -47,7 +47,7 @@ def config_oauth(app,dicConfig):
     check_status,check_result = check_dbconnect_success(DbSession, "PaaS")
     if check_status:
         sess = DbSession()
-        POOL = redis.ConnectionPool(host=dicConfig.get("DBREDISIp"),port=dicConfig.get("RedisPort"),db=15,password=dicConfig.get("RedisPassword"))
+        POOL = redis.ConnectionPool(host=dicConfig.get("DBREDISIp_PaaS"),port=dicConfig.get("RedisPort_PaaS"),db=15,password=dicConfig.get("RedisPassword_PaaS"))
         Yishan_dbRedis = redis.Redis(connection_pool=POOL)
 
         #Yishan add

@@ -1,6 +1,7 @@
 #assign app from sessionMgr
 print "-----into spdpaas.py-----"
-# from app import *
+from app import *
+print "-----spdpaas import app over-----"
 # appSapido = appPaaS
 # import app.apiPortal
 

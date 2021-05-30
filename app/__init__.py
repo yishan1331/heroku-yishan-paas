@@ -192,7 +192,7 @@ def _readConfig():
 # }}}
 dicConfig = _readConfig()
 
-# from modules import check_dbconnect_success
+from modules import check_dbconnect_success
 #=======================================================
 # DB Session Generation process  
 #=======================================================
@@ -301,7 +301,7 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
                                     bind=dbEngine))
 
         doLoggerHandler = True
-        if forRawData == 'postgres' and dbName == globalvar.PAAS_DASHBOARD_DBNAME.POSTGRES:
+        if forRawData == 'postgres' and dbName == globalvar.PAAS_DASHBOARD_DBNAME["POSTGRES"]:
             doLoggerHandler = False
             
         check_connect_success,check_result = check_dbconnect_success(dbSessionType(), system, doLoggerHandler=doLoggerHandler)

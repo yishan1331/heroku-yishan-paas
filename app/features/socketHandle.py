@@ -120,7 +120,7 @@ class GetImmediateLoggingFile():
                 self.work()
             else:
                 try:
-                    DbSessionRaw,metaRaw,engineRaw = appPaaS.getDbSessionType(system="PaaS",dbName=globalvar.PAAS_DASHBOARD_DBNAME.POSTGRES,forRawData="postgres")
+                    DbSessionRaw,metaRaw,engineRaw = appPaaS.getDbSessionType(system="PaaS",dbName=globalvar.PAAS_DASHBOARD_DBNAME["POSTGRES"],forRawData="postgres")
                     if DbSessionRaw is not None:
                         sessRaw = DbSessionRaw()
                         self.work({"sess":sessRaw,"meta":metaRaw})

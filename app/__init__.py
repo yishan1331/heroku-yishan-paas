@@ -104,33 +104,21 @@ def _readConfig():
         CELERY_RESULT_BACKEND = FILECONFIG.get('Celery', 'result_backend')
 
         #PaaS預設資料庫的ip、port、user、password(MYSQL、POSTGRESQL、REDIS)
-        # #MYSQL
-        # DBMYSQLIp = FILECONFIG.get(CONFIG["SYSTEM"]["MYSQL"],'ip')
-        # DBMYSQLPort = FILECONFIG.get(CONFIG["SYSTEM"]["MYSQL"],'port')
-        # DBMYSQLUser = FILECONFIG.get(CONFIG["SYSTEM"]["MYSQL"],'user')
-        # DBMYSQLPassword = FILECONFIG.get(CONFIG["SYSTEM"]["MYSQL"],'password')
-        # #POSTGRESQL
-        # DBPOSTGRESIp = FILECONFIG.get(CONFIG["SYSTEM"]["POSTGRESQL"],'ip')
-        # DBPOSTGRESPort = FILECONFIG.get(CONFIG["SYSTEM"]["POSTGRESQL"],'port')
-        # DBPOSTGRESUser = FILECONFIG.get(CONFIG["SYSTEM"]["POSTGRESQL"],'user')
-        # DBPOSTGRESPassword = FILECONFIG.get(CONFIG["SYSTEM"]["POSTGRESQL"],'password')
-        #REDIS
-        DBREDISIp = FILECONFIG.get(CONFIG["SYSTEM"]["REDIS"],'ip')
-        DBREDISPort = FILECONFIG.get(CONFIG["SYSTEM"]["REDIS"],'port')
-        DBREDISPassword = FILECONFIG.get(CONFIG["SYSTEM"]["REDIS"],'password')
+        DBMYSQLIp_PaaS = FILECONFIG.get("Mysql_PaaS",'ip')
+        DBMYSQLPort_PaaS = FILECONFIG.get("Mysql_PaaS",'port')
+        DBMYSQLUser_PaaS = FILECONFIG.get("Mysql_PaaS",'user')
+        DBMYSQLPassword_PaaS = FILECONFIG.get("Mysql_PaaS",'password')
+        DBMYSQLDbname_PaaS = FILECONFIG.get("Mysql_PaaS",'dbname')
 
-        DEFAULT_DB_CONFIG = {
-            "DBMYSQLIp":DBMYSQLIp,
-            "DBMYSQLPort":DBMYSQLPort,
-            "DBMYSQLUser":DBMYSQLUser,
-            "DBMYSQLPassword":DBMYSQLPassword
-        }
-        #Master PaaS feature
-        status,result = _getConfigParserDetails(FILECONFIG,CONFIG["SYSTEM"]["PaaS"],'dbname')
-        if status:
-            DBMYSQLDbname_PaaS = result
-        else:
-            DBMYSQLDbname_PaaS = None
+        DBPOSTGRESIp_PaaS = FILECONFIG.get("Postgresql_PaaS",'ip')
+        DBPOSTGRESPort_PaaS = FILECONFIG.get("Postgresql_PaaS",'port')
+        DBPOSTGRESUser_PaaS = FILECONFIG.get("Postgresql_PaaS",'user')
+        DBPOSTGRESPassword_PaaS = FILECONFIG.get("Postgresql_PaaS",'password')
+        DBPOSTGRESDbname_PaaS = FILECONFIG.get("Postgresql_PaaS",'dbname')
+
+        DBREDISIp_PaaS = FILECONFIG.get("Redis_PaaS",'ip')
+        DBREDISPort_PaaS = FILECONFIG.get("Redis_PaaS",'port')
+        DBREDISPassword_PaaS = FILECONFIG.get("Redis_PaaS",'password')
 
         # #Email feature
         try:
@@ -143,16 +131,9 @@ def _readConfig():
             EmailUser = None
             EmailPassword = None
         
-        #APIDOC feature
-        status,result = _getConfigParserDetails(FILECONFIG,CONFIG["SYSTEM"]["APIDOC"],'dbname')
-        if status:
-            DBMYSQLDbname_APIDOC = result
-        else:
-            DBMYSQLDbname_APIDOC = None
-
         #Yishan@08072019 修改抓取資料庫基本資料方式
-        diff_system = {}
         repeatconfig = ["ip","port","user","password","dbname"]
+        diff_system = {}
         #diff server ip
         for system,system_value in CONFIG[SERVERIP].items():
             for add_ons,add_ons_value in system_value.items():
@@ -172,7 +153,7 @@ def _readConfig():
                             if status:
                                 diff_system[this_key] = result
                             else:
-                                diff_system[this_key] = DEFAULT_DB_CONFIG[DBCONFIG[add_ons]+i.capitalize()]
+                                diff_system[this_key] = None
 
         print "~~~~diff_system~~~~~"
         print diff_system
@@ -181,23 +162,19 @@ def _readConfig():
             'aes_key': AES_KEY,
             'celery_broker'  : CELERY_BROKER,
             'celery_result_backend'  : CELERY_RESULT_BACKEND,
-            'DBMYSQLIp_PaaS' : DBMYSQLIp,
-            'DBMYSQLPort_PaaS' : DBMYSQLPort,
-            'DBMYSQLUser_PaaS' : DBMYSQLUser,
-            'DBMYSQLPassword_PaaS' : DBMYSQLPassword,
+            'DBMYSQLIp_PaaS' : DBMYSQLIp_PaaS,
+            'DBMYSQLPort_PaaS' : DBMYSQLPort_PaaS,
+            'DBMYSQLUser_PaaS' : DBMYSQLUser_PaaS,
+            'DBMYSQLPassword_PaaS' : DBMYSQLPassword_PaaS,
             'DBMYSQLDbname_PaaS' : DBMYSQLDbname_PaaS,
-            'DBMYSQLIp_APIDOC' : DBMYSQLIp,
-            'DBMYSQLPort_APIDOC' : DBMYSQLPort,
-            'DBMYSQLUser_APIDOC' : DBMYSQLUser,
-            'DBMYSQLPassword_APIDOC' : DBMYSQLPassword,
-            'DBMYSQLDbname_APIDOC' : DBMYSQLDbname_APIDOC,
-            'DBPOSTGRESIp' : DBPOSTGRESIp,
-            'DBPOSTGRESPort' : DBPOSTGRESPort,
-            'DBPOSTGRESUser' : DBPOSTGRESUser,
-            'DBPOSTGRESPassword' : DBPOSTGRESPassword,
-            'DBREDISIp' : DBREDISIp,
-            'DBREDISPort' : DBREDISPort,
-            'DBREDISPassword' : DBREDISPassword
+            'DBPOSTGRESIp_PaaS' : DBPOSTGRESIp_PaaS,
+            'DBPOSTGRESPort_PaaS' : DBPOSTGRESPort_PaaS,
+            'DBPOSTGRESUser_PaaS' : DBPOSTGRESUser_PaaS,
+            'DBPOSTGRESPassword_PaaS' : DBPOSTGRESPassword_PaaS,
+            'DBPOSTGRESDbname_PaaS' : DBPOSTGRESDbname_PaaS,
+            'DBREDISIp_PaaS' : DBREDISIp_PaaS,
+            'DBREDISPort_PaaS' : DBREDISPort_PaaS,
+            'DBREDISPassword_PaaS' : DBREDISPassword_PaaS
         }
 
         dicConfig.update(diff_system)

@@ -83,16 +83,6 @@ DBCONFIG = {
     "MSSQL":"DBMSSQL"
 }
 CONFIG = {
-    #DB config
-    "SYSTEM":{
-        #DB
-        "MYSQL":"DataBaseMysql",
-        "POSTGRESQL":"DataBasePostgresql",
-        "REDIS":"DataBaseRedis",
-        #Feature
-        "APIDOC":"Mysql_APIDOC",
-        "PaaS":"Mysql_PaaS"
-    },
     #diff ip dbname
     "server71": {
         "IOT":{
@@ -121,6 +111,8 @@ CONFIG = {
     "serverCZ": {
         "CHUNZU":{
             "MYSQL":["Mysql_CHUNZU"],
+            "POSTGRESQL":["Postgresql_CHUNZU"],
+            "REDIS":["Redis_CHUNZU"],
             "Email":"Email"
         }
     }

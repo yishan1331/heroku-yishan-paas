@@ -303,6 +303,7 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
                 err_msg = appPaaS.catch_exception(e,sys.exc_info(),system)
                 return None,None,err_msg
     except Exception as e:
+        err_msg = e
         # err_msg = appPaaS.catch_exception(e,sys.exc_info(),system)
         return None,None,err_msg
 

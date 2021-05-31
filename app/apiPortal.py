@@ -147,7 +147,7 @@ thread.start_new_thread(check_Lic, (43200, ))
 @appPaaS.route("/")
 def homePage():
     #print '\nIn sessionMgr, Lic: {}\n'.format(appPaaS.licCheck)
-    dicRet = appPaaS.preProcessRequest(request, system="PaaS")
+    dicRet = preProcessRequest(request, system="PaaS")
     print "*******dicRet********"
     print type(dicRet)
     print dicRet

@@ -149,6 +149,7 @@ def homePage():
     #print '\nIn sessionMgr, Lic: {}\n'.format(appPaaS.licCheck)
     dicRet = appPaaS.preProcessRequest(request, system="PaaS")
     print "*******dicRet********"
+    print type(dicRet)
     print dicRet
     #reserved for user ID check
     #reUser_id = request.args.get("uid")
@@ -159,11 +160,13 @@ def homePage():
     print "~~~~mesg~~~~"
     print mesg
 
-    dicRet_ = dicRet
-    dicRet_["message"] = mesg   
-    dicRet_["Response"] = "ok"
-    print "$$$$$$dicRet_$$$$$"
-    print dicRet_
+    dicRet["message"] = mesg   
+    dicRet["Response"] = "ok"
+    print "$$$$$$dicRet$$$$$"
+    print dicRet
+    print type(dicRet)
+    print jsonify( **dicRet_)
+    print type(jsonify( **dicRet_))
     return jsonify( **dicRet_)
 # }}}
 #=======================================================

@@ -251,7 +251,9 @@ def preProcessRequest(request,system=""):
     print "..............................................................................................."
     print datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
 
-    dicRet = {}
+    dicRet = {
+        "System":system
+    }
     # dicRet["APIS"] = "{} {}".format(request.method,request.path)
     # dicRet["Response"] = err_msg
     # dicRet["System"] = system

@@ -43,26 +43,19 @@ class BaseConfig(object):
 def readConfig():
     import os, time
     import ConfigParser
-    from app.globalvar import CONFIG as _CONFIG
     try:
-        get_request_start_time = int(round(time.time()* 1000000))
+        CONFPATH = os.path.join(ROOT_DIR,"config.conf")
 
-        if not os.path.isfile('/var/www/spdpaas/config/deconstants_{}.conf'.format(str(get_request_start_time))):
-            with os.popen('/usr/bin/openssl enc -aes-128-cbc -d -in /var/www/spdpaas/config/encconstants.conf -out /var/www/spdpaas/config/deconstants_{}.conf -pass pass:sapidotest2019'.format(str(get_request_start_time))) as osdecrypt:
-                osdecrypt.read()
-
-        CONFPATH = "/var/www/spdpaas/config/deconstants_{}.conf".format(str(get_request_start_time))
-
-        CONFIG = ConfigParser.ConfigParser()
-        CONFIG.read(CONFPATH)
+        FILECONFIG = ConfigParser.ConfigParser()
+        FILECONFIG.read(CONFPATH)
 
         dicConfig = {
-            "celery_broker":CONFIG.get('Celery', 'broker'),
-            "celery_result_backend":CONFIG.get('Celery', 'result_backend'),
-            "dbpostgres_ip":CONFIG.get(_CONFIG["SYSTEM"]["POSTGRESQL"],'ip'),
-            "dbpostgres_port":CONFIG.get(_CONFIG["SYSTEM"]["POSTGRESQL"],'port'),
-            "dbpostgres_user":CONFIG.get(_CONFIG["SYSTEM"]["POSTGRESQL"],'user'),
-            "dbpostgres_password":CONFIG.get(_CONFIG["SYSTEM"]["POSTGRESQL"],'password')
+            "celery_broker":FILECONFIG.get('Celery', 'broker'),
+            "celery_result_backend":FILECONFIG.get('Celery', 'result_backend'),
+            "dbpostgres_ip":FILECONFIG.get("Postgresql_PaaS",'ip'),
+            "dbpostgres_port":FILECONFIG.get("Postgresql_PaaS",'port'),
+            "dbpostgres_user":FILECONFIG.get("Postgresql_PaaS",'user'),
+            "dbpostgres_password":FILECONFIG.get("Postgresql_PaaS",'password')
         }
         return dicConfig
     
@@ -70,8 +63,3 @@ def readConfig():
         print "~~~~celery config error~~~~"
         print e
         return False
-
-    finally:
-        if os.path.isfile('/var/www/spdpaas/config/deconstants_{}.conf'.format(str(get_request_start_time))):
-            with os.popen('/bin/rm /var/www/spdpaas/config/deconstants_{}.conf'.format(str(get_request_start_time))) as osrm:
-                osrm.read()

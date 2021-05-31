@@ -70,10 +70,10 @@ class DBTask(Task):
                 from sqlalchemy.engine import create_engine
                 
                 dbUri = "postgresql+psycopg2://{}:{}@{}:{}/{}".format( \
-                            dicConfig.get("DBPOSTGRESUser"),   \
-                            dicConfig.get("DBPOSTGRESPassword"),   \
-                            dicConfig.get("DBPOSTGRESIp"), \
-                            dicConfig.get("DBPOSTGRESPort"),  \
+                            dicConfig.get("DBPOSTGRESUser_"+self._system),   \
+                            dicConfig.get("DBPOSTGRESPassword_"+self._system),   \
+                            dicConfig.get("DBPOSTGRESIp_"+self._system), \
+                            dicConfig.get("DBPOSTGRESPort_"+self._system),  \
                             "sapidoapicount_"+self._system.lower())
                 print "@@@@@@dbUri@@@@@@@@"
                 print dbUri

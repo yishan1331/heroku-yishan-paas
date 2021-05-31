@@ -285,12 +285,12 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
                                 dicConfig.get(RedisIp),
                                 dicConfig.get(RedisPort))
                 print "~~~redis dbUri~~~"
-                print os.environ.get("REDIS_TLS_URL")
+                print os.environ.get("REDIS_URL")
                 try:
                     from urllib.parse import urlparse
                 except ImportError:
                     from urlparse import urlparse
-                dbUri = urlparse(os.environ.get("REDIS_TLS_URL"))
+                dbUri = urlparse(os.environ.get("REDIS_URL"))
                 dbRedis = redis.Redis(host=dbUri.hostname, port=dbUri.port, password=dbUri.password, ssl=True, ssl_cert_reqs=None)
                 # dbRedis = redis.from_url(os.environ.get("REDIS_TLS_URL"))
                 # dbRedis = redis.from_url(dbUri)

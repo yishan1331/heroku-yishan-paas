@@ -165,8 +165,6 @@ def homePage():
     print "$$$$$$dicRet$$$$$"
     print dicRet
     print type(dicRet)
-    print jsonify( **dicRet)
-    print type(jsonify( **dicRet))
     return jsonify( **dicRet)
 # }}}
 #=======================================================
@@ -256,7 +254,7 @@ def preProcessRequest(request,system=""):
     dicRet = {}
     # dicRet["APIS"] = "{} {}".format(request.method,request.path)
     # dicRet["Response"] = err_msg
-    dicRet["System"] = system
+    # dicRet["System"] = system
     return dicRet
 # }}}
 appPaaS.preProcessRequest = preProcessRequest

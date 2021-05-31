@@ -286,7 +286,10 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
                                 dicConfig.get(RedisPort))
                 print "~~~redis dbUri~~~"
                 print os.environ.get("REDIS_TLS_URL")
-                dbRedis = redis.from_url(os.environ.get("REDIS_TLS_URL"))
+                from urllib.parse import urlparse
+                dbUri = urlparse(os.environ.get("REDIS_TLS_URL"))
+                dbRedis = redis.Redis(host=url.hostname, port=url.port, username=url.username, password=url.password, ssl=True, ssl_cert_reqs=None)
+                # dbRedis = redis.from_url(os.environ.get("REDIS_TLS_URL"))
                 # dbRedis = redis.from_url(dbUri)
                 return dbRedis,None,None
             except Exception as e:

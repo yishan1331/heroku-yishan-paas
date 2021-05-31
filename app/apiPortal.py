@@ -153,6 +153,7 @@ def homePage():
 
     dicRet["message"] = mesg   
     dicRet["Response"] = "ok"
+    print dicRet
     return jsonify( **dicRet)
 # }}}
 #=======================================================
@@ -302,34 +303,33 @@ def per_request_postprocess(Response):
             dicRet.update(dic)
             Response.set_data(json.dumps(dicRet))
 
-        return
-        if dicRet.has_key('Response') and dicRet.has_key('System'):
-            if dicRet.get('Response') != "ok":
-                threaddata = [dicRet.get('System'), request.method, request.path, "0", timeCost, nowTime]
-            else:
-                threaddata = [dicRet.get('System'), request.method, request.path, "1", timeCost, nowTime]
+        # if dicRet.has_key('Response') and dicRet.has_key('System'):
+        #     if dicRet.get('Response') != "ok":
+        #         threaddata = [dicRet.get('System'), request.method, request.path, "0", timeCost, nowTime]
+        #     else:
+        #         threaddata = [dicRet.get('System'), request.method, request.path, "1", timeCost, nowTime]
 
-            #暫時先排除為PaaS的api
-            # if (dicRet.get('System') != "PaaS" and dicRet.get('System') is not None):
-            if dicRet.get('System') is not None:
-                # pass
-                # print datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
+        #     #暫時先排除為PaaS的api
+        #     # if (dicRet.get('System') != "PaaS" and dicRet.get('System') is not None):
+        #     if dicRet.get('System') is not None:
+        #         # pass
+        #         # print datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
 
-                #第一版
-                # thread.start_new_thread(celery_post_api_count_record, (threaddata, ))
+        #         #第一版
+        #         # thread.start_new_thread(celery_post_api_count_record, (threaddata, ))
 
-                #第二版 Yishan@12212020 修改thread寫法->threading
-                # worker = ApiRecordWorkerThread(os.getpid(), lock, post_api_count_record, threaddata)
-                # worker.start()
+        #         #第二版 Yishan@12212020 修改thread寫法->threading
+        #         # worker = ApiRecordWorkerThread(os.getpid(), lock, post_api_count_record, threaddata)
+        #         # worker.start()
 
-                #第三版
-                from celeryApp.celeryTasks import celery_post_api_count_record
-                celery_post_api_count_record.apply_async(args=(threaddata,), routing_key='low', queue="L-queue1")
+        #         #第三版
+        #         from celeryApp.celeryTasks import celery_post_api_count_record
+        #         celery_post_api_count_record.apply_async(args=(threaddata,), routing_key='low', queue="L-queue1")
 
-                # print "@@@@@@@@@@@@@@@",datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
-                # print "Done.",datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
+        #         # print "@@@@@@@@@@@@@@@",datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
+        #         # print "Done.",datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
 
-            #traceback.print_exc(file=sys.stdout)
+        #     #traceback.print_exc(file=sys.stdout)
 
         # if hasattr(request,"request_start_time_"):
         #     apiTimeCost = time.time()-request.request_start_time_
@@ -401,7 +401,7 @@ def per_request_postprocess(Response):
     #wei@05022017 debug
     #appPaaS.logging.error("In post-request: {}".format(Response.headers))
 
-    # print "~~~~~~Return.~~~~~~~",datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
+    print "~~~~~~Return.~~~~~~~",datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
     return Response
 # }}}
 

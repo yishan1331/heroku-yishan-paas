@@ -285,10 +285,9 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
                                 dicConfig.get(RedisIp),
                                 dicConfig.get(RedisPort))
                 print "~~~redis dbUri~~~"
-                print dbUri
-                print os.environ.get("REDIS_URL")
-                # dbRedis = redis.from_url(os.environ.get("REDIS_URL"))
-                dbRedis = redis.from_url(dbUri)
+                print os.environ.get("REDIS_TLS_URL")
+                dbRedis = redis.from_url(os.environ.get("REDIS_TLS_URL"))
+                # dbRedis = redis.from_url(dbUri)
                 return dbRedis,None,None
             except Exception as e:
                 print "~~~connect redis error~~~~~"

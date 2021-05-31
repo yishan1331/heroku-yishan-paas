@@ -159,11 +159,12 @@ def homePage():
     print "~~~~mesg~~~~"
     print mesg
 
-    dicRet["message"] = mesg   
-    dicRet["Response"] = "ok"
-    print "$$$$$$dicRet$$$$$"
-    print dicRet
-    return jsonify( **dicRet)
+    dicRet_ = {}
+    dicRet_["message"] = mesg   
+    dicRet_["Response"] = "ok"
+    print "$$$$$$dicRet_$$$$$"
+    print dicRet_
+    return jsonify( **dicRet_)
 # }}}
 #=======================================================
 
@@ -248,6 +249,7 @@ def preProcessRequest(request,system=""):
     err_msg = "ok"
     print "..............................................................................................."
     print datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
+    return "TEST"
 
     dicRet = {}
     # dicRet["APIS"] = "{} {}".format(request.method,request.path)

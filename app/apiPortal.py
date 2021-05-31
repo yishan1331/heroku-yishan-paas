@@ -146,25 +146,13 @@ thread.start_new_thread(check_Lic, (43200, ))
 # {{{ appPaaS.route("/")
 @appPaaS.route("/")
 def homePage():
-    #print '\nIn sessionMgr, Lic: {}\n'.format(appPaaS.licCheck)
     dicRet = appPaaS.preProcessRequest(request, system="PaaS")
-    print "*******dicRet********"
-    print type(dicRet)
-    print dicRet
-    #reserved for user ID check
-    #reUser_id = request.args.get("uid")
     mesg = "<h1 style='color:blue'>sapido-License check failed!</h1>"
     if appPaaS.licCheck == 0:
         mesg = "<h1 style='color:blue'>sapido-PaaS!</h1>"
 
-    print "~~~~mesg~~~~"
-    print mesg
-
     dicRet["message"] = mesg   
     dicRet["Response"] = "ok"
-    print "$$$$$$dicRet$$$$$"
-    print dicRet
-    print type(dicRet)
     return jsonify( **dicRet)
 # }}}
 #=======================================================
@@ -180,36 +168,6 @@ def test():
     print "$$$$$$dicRet$$$$$"
     print dicRet
     return jsonify( **dicRet)
-
-#test for queue
-# my_queue = Queue.Queue()
-# @appPaaS.route("/TestThreadQueue/<number>")
-# def test_thread_queue(number):
-#     import threading
-
-#     # 建立 lock
-#     lock = threading.Lock()
-
-#     print "now queue size -> ",my_queue.qsize()
-#     # global my_queue
-#     for i in range(int(number)):
-#         my_queue.put("Data %d" % i)
-
-#     print "this pid -> ",os.getpid()
-#     print "now queue size -> ",my_queue.qsize()
-
-#     my_worker1 = _WorkerThreadQueue(my_queue, 1, lock, 3)
-#     my_worker2 = _WorkerThreadQueue(my_queue, 2, lock, 2)
-
-#     my_worker1.start()
-#     my_worker2.start()
-
-#     my_worker1.join()
-#     my_worker2.join()
-#     print "now queue size -> ",my_queue.qsize()
-#     print "Done."
-
-#     return jsonify( **{"test":"ok"})
 
 #=======================================================
 # special API to query time, 
@@ -254,9 +212,6 @@ def preProcessRequest(request,system=""):
     dicRet = {
         "System":system
     }
-    # dicRet["APIS"] = "{} {}".format(request.method,request.path)
-    # dicRet["Response"] = err_msg
-    # dicRet["System"] = system
     return dicRet
 # }}}
 appPaaS.preProcessRequest = preProcessRequest
@@ -347,6 +302,7 @@ def per_request_postprocess(Response):
             dicRet.update(dic)
             Response.set_data(json.dumps(dicRet))
 
+        return
         if dicRet.has_key('Response') and dicRet.has_key('System'):
             if dicRet.get('Response') != "ok":
                 threaddata = [dicRet.get('System'), request.method, request.path, "0", timeCost, nowTime]
@@ -356,7 +312,8 @@ def per_request_postprocess(Response):
             #暫時先排除為PaaS的api
             # if (dicRet.get('System') != "PaaS" and dicRet.get('System') is not None):
             if dicRet.get('System') is not None:
-                print datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
+                # pass
+                # print datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
 
                 #第一版
                 # thread.start_new_thread(celery_post_api_count_record, (threaddata, ))
@@ -369,8 +326,8 @@ def per_request_postprocess(Response):
                 from celeryApp.celeryTasks import celery_post_api_count_record
                 celery_post_api_count_record.apply_async(args=(threaddata,), routing_key='low', queue="L-queue1")
 
-                print "@@@@@@@@@@@@@@@",datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
-                print "Done.",datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
+                # print "@@@@@@@@@@@@@@@",datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
+                # print "Done.",datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
 
             #traceback.print_exc(file=sys.stdout)
 

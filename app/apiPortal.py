@@ -165,9 +165,9 @@ def homePage():
     print "$$$$$$dicRet$$$$$"
     print dicRet
     print type(dicRet)
-    print jsonify( **dicRet_)
-    print type(jsonify( **dicRet_))
-    return jsonify( **dicRet_)
+    print jsonify( **dicRet)
+    print type(jsonify( **dicRet))
+    return jsonify( **dicRet)
 # }}}
 #=======================================================
 

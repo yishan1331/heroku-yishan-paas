@@ -291,7 +291,7 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
                 except ImportError:
                     from urlparse import urlparse
                 dbUri = urlparse(os.environ.get("REDIS_TLS_URL"))
-                dbRedis = redis.Redis(host=dbUri.hostname, port=dbUri.port, username=dbUri.username, password=dbUri.password, ssl=True, ssl_cert_reqs=None)
+                dbRedis = redis.Redis(host=dbUri.hostname, port=dbUri.port, password=dbUri.password, ssl=True, ssl_cert_reqs=None)
                 # dbRedis = redis.from_url(os.environ.get("REDIS_TLS_URL"))
                 # dbRedis = redis.from_url(dbUri)
                 return dbRedis,None,None

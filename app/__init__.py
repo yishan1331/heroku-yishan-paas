@@ -347,6 +347,7 @@ appPaaS.getDbSessionType = getDbSessionType
 # celery = make_celery(appPaaS,dicConfig)
 # print "~~~~celery~~~~"
 # print celery
+celery = None
 
 print "~~~~sys._getframe(1).f_globals.get('__name__')~~~~"
 print sys._getframe(1).f_globals.get('__name__')

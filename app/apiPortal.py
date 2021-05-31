@@ -356,8 +356,7 @@ def per_request_postprocess(Response):
             #暫時先排除為PaaS的api
             # if (dicRet.get('System') != "PaaS" and dicRet.get('System') is not None):
             if dicRet.get('System') is not None:
-                # pass
-                # print datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
+                print datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
 
                 #第一版
                 # thread.start_new_thread(celery_post_api_count_record, (threaddata, ))
@@ -370,8 +369,8 @@ def per_request_postprocess(Response):
                 from celeryApp.celeryTasks import celery_post_api_count_record
                 celery_post_api_count_record.apply_async(args=(threaddata,), routing_key='low', queue="L-queue1")
 
-                # print "@@@@@@@@@@@@@@@",datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
-                # print "Done.",datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
+                print "@@@@@@@@@@@@@@@",datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
+                print "Done.",datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
 
             #traceback.print_exc(file=sys.stdout)
 
@@ -586,9 +585,9 @@ if sys._getframe(1).f_globals.get('__name__') == "spdpaas":
 # Yishan Tsai
 # 初始設定apirecord的hash numer(apirecord_hash_num)
 #=======================================================
-# if sys._getframe(1).f_globals.get('__name__') == "spdpaas":
-#     from celeryApp.celeryTasks import apirecord_hash_num_init
-#     apirecord_hash_num_init()
+if sys._getframe(1).f_globals.get('__name__') == "spdpaas":
+    from celeryApp.celeryTasks import apirecord_hash_num_init
+    apirecord_hash_num_init()
 #=======================================================
 
 #=======================================================

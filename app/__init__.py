@@ -343,11 +343,10 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
 # }}}
 appPaaS.getDbSessionType = getDbSessionType
 
-# from celeryApp.celeryBroker import make_celery
-# celery = make_celery(appPaaS,dicConfig)
-# print "~~~~celery~~~~"
-# print celery
-celery = None
+from celeryApp.celeryBroker import make_celery
+celery = make_celery(appPaaS,dicConfig)
+print "~~~~celery~~~~"
+print celery
 
 print "~~~~sys._getframe(1).f_globals.get('__name__')~~~~"
 print sys._getframe(1).f_globals.get('__name__')

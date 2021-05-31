@@ -147,7 +147,7 @@ thread.start_new_thread(check_Lic, (43200, ))
 @appPaaS.route("/")
 def homePage():
     #print '\nIn sessionMgr, Lic: {}\n'.format(appPaaS.licCheck)
-    dicRet = preProcessRequest(request, system="PaaS")
+    dicRet = appPaaS.preProcessRequest(request, system="PaaS")
     print "*******dicRet********"
     print type(dicRet)
     print dicRet
@@ -586,9 +586,9 @@ if sys._getframe(1).f_globals.get('__name__') == "spdpaas":
 # Yishan Tsai
 # 初始設定apirecord的hash numer(apirecord_hash_num)
 #=======================================================
-if sys._getframe(1).f_globals.get('__name__') == "spdpaas":
-    from celeryApp.celeryTasks import apirecord_hash_num_init
-    apirecord_hash_num_init()
+# if sys._getframe(1).f_globals.get('__name__') == "spdpaas":
+#     from celeryApp.celeryTasks import apirecord_hash_num_init
+#     apirecord_hash_num_init()
 #=======================================================
 
 #=======================================================

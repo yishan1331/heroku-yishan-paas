@@ -55,20 +55,20 @@ CREATETIME = {
     "server75": {"mysql":"createTime","mssql":"created_at"},
     "serverKSS": {"mysql":"createTime","mssql":"created_at"},
     "serverCZ": {"mysql":"created_at","mssql":"created_at"},
-    "serverYS": {"mysql":"created_at","mssql":"created_at"}
+    "serverYS": {"mysql":"createTime","mssql":"created_at"}
 }
 UPLOADTIME = {
     "server71": {"mysql":"updated_at","mssql":"update_at","postgres":"upload_at"},
     "server75": {"mysql":"lastUpdateTime","postgres":"upload_at","mssql":"update_at"},
     "serverKSS": {"mysql":"lastUpdateTime","postgres":"upload_at","mssql":"update_at"},
     "serverCZ": {"mysql":"updated_at","mssql":"update_at","postgres":"upload_at"},
-    "serverYS": {"mysql":"updated_at","mssql":"update_at","postgres":"upload_at"}
+    "serverYS": {"mysql":"lastUpdateTime","mssql":"update_at","postgres":"upload_at"}
 }
 MYSQL_USER_ID = {
     "server71": "user_id",
     "server75": "uID",
     "serverCZ": "user_id",
-    "serverYS": "user_id"
+    "serverYS": "uID"
 }
 
 #logging模組要查看的log file列表

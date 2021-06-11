@@ -141,7 +141,7 @@ def transitionDB_commonuse_get_tabledata(SYSTEM):
         "API_path_parameters":{"SYSTEM":"合法的系統名稱"},
         "API_message_parameters":{"Table":"string","QueryTableData":"JSON","DB":"string"},
         "API_example":{
-            "APIS": " GET /api/SAPIDOSYSTEM/1.0/my/CommonUse/TableData",
+            "APIS": " GET /api/VUESYSTEM/1.0/my/CommonUse/TableData",
             "BytesTransferred": 50810,
             "userID": "LTMtouspourun",
             "OperationTime": "0.223",
@@ -294,11 +294,11 @@ def transitionDB_commonuse_create_table(SYSTEM):
         },
         "API_example":{
             "Response": "ok",
-            "APIS": "POST /api/SAPIDOSYSTEM/1.0/my/CommonUse/CreateTable",
+            "APIS": "POST /api/VUESYSTEM/1.0/my/CommonUse/CreateTable",
             "OperationTime": "0.212",
             "BytesTransferred": 111,
             "DB": "MYSQL",
-            "System": "SAPIDOSYSTEM",
+            "System": "VUESYSTEM",
             "dbName": "site2"
         }
     }
@@ -397,7 +397,7 @@ def transitionDB_commonuse_get_multi_rows_interval(SYSTEM,tableID):
         },
         "API_message_parameters":{"Table":"string","QueryTableData":"JSON","DB":"string"},
         "API_example":{
-            "APIS": " GET /api/SAPIDOSYSTEM/1.0/my/CommonUse/Interval/department",
+            "APIS": " GET /api/VUESYSTEM/1.0/my/CommonUse/Interval/department",
             "BytesTransferred": 436,
             "Table": "department",
             "OperationTime": "0.019",
@@ -411,9 +411,9 @@ def transitionDB_commonuse_get_multi_rows_interval(SYSTEM,tableID):
                 "created_at": "2019-08-26 11:54:10",
                 "noumenonID": "",
                 "creatorID": "",
-                "depname": "sapidoSAPIDOSYSTEM",
-                "depID": "sapidoSAPIDOSYSTEM",
-                "dbName": "sapidoSAPIDOSYSTEM"
+                "depname": "sapidoVUESYSTEM",
+                "depID": "sapidoVUESYSTEM",
+                "dbName": "sapidoVUESYSTEM"
             }],
             "DB":"MYSQL"
         }
@@ -586,7 +586,7 @@ def transitionDB_commonuse_get_sqlsyntax(SYSTEM,tableName):
         },
         "API_message_parameters":{"Table":"string","QueryTableData":"JSON","DB":"string"},
         "API_example":{
-            "APIS": " POST /api/SAPIDOSYSTEM/1.0/my/CommonUse/SqlSyntax/user",
+            "APIS": " POST /api/VUESYSTEM/1.0/my/CommonUse/SqlSyntax/user",
             "BytesTransferred": 50810,
             "OperationTime": "0.223",
             "Response": "ok",
@@ -1653,7 +1653,7 @@ def transitionDB_commonuse_get_sqlsyntax_v2(SYSTEM):
         },
         "API_message_parameters":{"Table":"string","QueryTableData":"JSON","DB":"string"},
         "API_example":{
-            "APIS": " POST /api/SAPIDOSYSTEM/2.0/my/CommonUse/SqlSyntax",
+            "APIS": " POST /api/VUESYSTEM/2.0/my/CommonUse/SqlSyntax",
             "BytesTransferred": 50810,
             "OperationTime": "0.223",
             "Response": "ok",
@@ -1826,11 +1826,11 @@ def transitionDB_commonuse_get_sqlsyntax_joinmultitable(SYSTEM):
         },
         "API_message_parameters":{"QueryTableData":"JSON","DB":"string"},
         "API_example":{
-            "APIS": "POST /api/SAPIDOSYSTEM/1.0/my/CommonUse/SqlSyntax/JoinMultiTable",
+            "APIS": "POST /api/VUESYSTEM/1.0/my/CommonUse/SqlSyntax/JoinMultiTable",
             "OperationTime": "0.298",
             "BytesTransferred": 353,
             "DB": "MSSQL",
-            "System": "SAPIDOSYSTEM",
+            "System": "VUESYSTEM",
             "QueryTableData": [
                 {
                     "wire_box$wire_diameter": "4.8",
@@ -2607,11 +2607,11 @@ def transitionDB_commonuse_get_sqlsyntax_joinmultitable_v2(SYSTEM):
         },
         "API_message_parameters":{"QueryTableData":"JSON","DB":"string"},
         "API_example":{
-            "APIS": "POST /api/SAPIDOSYSTEM/2.0/my/CommonUse/SqlSyntax/JoinMultiTable",
+            "APIS": "POST /api/VUESYSTEM/2.0/my/CommonUse/SqlSyntax/JoinMultiTable",
             "OperationTime": "0.298",
             "BytesTransferred": 353,
             "DB": "MSSQL",
-            "System": "SAPIDOSYSTEM",
+            "System": "VUESYSTEM",
             "QueryTableData": [
                 {
                     "wire_box$wire_diameter": "4.8",
@@ -2762,11 +2762,11 @@ def transitionDB_commonuse_get_sqlsyntax_joinmultitable_v2(SYSTEM):
 #         },
 #         "API_example":{
 #             "Response": "ok",
-#             "APIS": "POST /api/SAPIDOSYSTEM/1.0/my/CommonUse/CreateTable",
+#             "APIS": "POST /api/VUESYSTEM/1.0/my/CommonUse/CreateTable",
 #             "OperationTime": "0.212",
 #             "BytesTransferred": 111,
 #             "DB": "MYSQL",
-#             "System": "SAPIDOSYSTEM",
+#             "System": "VUESYSTEM",
 #             "dbName": "site2"
 #         }
 #     }
@@ -2898,7 +2898,7 @@ def transitionDB_commonuse_register(SYSTEM,tableName):
         "API_path_parameters":{"SYSTEM":"合法的系統名稱","tableName":"資料表名稱"},
         "API_message_parameters":{"Table":"string","DB":"string","insertstatus":"string+各筆資料新增狀態，若全部新增成功則無此Response"},
         "API_example":{
-            "APIS": "POST /api/SAPIDOSYSTEM/1.0/my/CommonUse/SAPIDOSYSTEMgroup",
+            "APIS": "POST /api/VUESYSTEM/1.0/my/CommonUse/VUESYSTEMgroup",
             "OperationTime": "0.033",
             "Response": "ok",
             "BytesTransferred": 76,
@@ -3157,7 +3157,7 @@ def transitionDB_commonuse_register_v1_5(SYSTEM,tableName):
         "API_path_parameters":{"SYSTEM":"合法的系統名稱","tableName":"資料表名稱"},
         "API_message_parameters":{"Table":"string","DB":"string","insertstatus":"string+各筆資料新增狀態，若全部新增成功則無此Response"},
         "API_example":{
-            "APIS": "POST /api/SAPIDOSYSTEM/1.5/my/CommonUse/SAPIDOSYSTEMgroup",
+            "APIS": "POST /api/VUESYSTEM/1.5/my/CommonUse/VUESYSTEMgroup",
             "OperationTime": "0.033",
             "Response": "ok",
             "BytesTransferred": 76,
@@ -3258,12 +3258,12 @@ def transitionDB_commonuse_update(SYSTEM,tableName):
         "API_path_parameters":{"SYSTEM":"合法的系統名稱","tableName":"資料表名稱"},
         "API_message_parameters":{"Table":"string","DB":"string","updatestatus":"string+各筆資料更新狀態，若全部更新成功則無此Response"},
         "API_example":{
-            "APIS": "PATCH /api/SAPIDOSYSTEM/1.0/my/CommonUse/SAPIDOSYSTEMgroup",
+            "APIS": "PATCH /api/VUESYSTEM/1.0/my/CommonUse/VUESYSTEMgroup",
             "OperationTime": "0.033",
             "Response": "ok",
             "BytesTransferred": 76,
             "DB":"MYSQL",
-            "Table":"SAPIDOSYSTEMgroup"
+            "Table":"VUESYSTEMgroup"
         }
     }
     '''
@@ -3480,12 +3480,12 @@ def transitionDB_commonuse_update_v1_5(SYSTEM,tableName):
         "API_path_parameters":{"SYSTEM":"合法的系統名稱","tableName":"資料表名稱"},
         "API_message_parameters":{"Table":"string","DB":"string","updatestatus":"string+各筆資料更新狀態，若全部更新成功則無此Response"},
         "API_example":{
-            "APIS": "PATCH /api/SAPIDOSYSTEM/1.5/my/CommonUse/SAPIDOSYSTEMgroup",
+            "APIS": "PATCH /api/VUESYSTEM/1.5/my/CommonUse/VUESYSTEMgroup",
             "OperationTime": "0.033",
             "Response": "ok",
             "BytesTransferred": 76,
             "DB":"MYSQL",
-            "Table":"SAPIDOSYSTEMgroup"
+            "Table":"VUESYSTEMgroup"
         }
     }
     '''
@@ -3575,7 +3575,7 @@ def transitionDB_commonuse_delete(SYSTEM,tableName):
         "API_path_parameters":{"SYSTEM":"合法的系統名稱","tableName":"資料表名稱"},
         "API_message_parameters":{"Table":"string","DB":"string","deletestatus":"string+各筆資料刪除狀態，若全部刪除成功則無此Response"},
         "API_example":{
-            "APIS": "DELETE /api/SAPIDOSYSTEM/1.0/my/CommonUse/SAPIDOSYSTEMgroup",
+            "APIS": "DELETE /api/VUESYSTEM/1.0/my/CommonUse/VUESYSTEMgroup",
             "OperationTime": "0.033",
             "Response": "ok",
             "BytesTransferred": 76,
@@ -3804,7 +3804,7 @@ def transitionDB_commonuse_delete_v1_5(SYSTEM,tableName):
         "API_path_parameters":{"SYSTEM":"合法的系統名稱","tableName":"資料表名稱"},
         "API_message_parameters":{"Table":"string","DB":"string","deletestatus":"string+各筆資料刪除狀態，若全部刪除成功則無此Response"},
         "API_example":{
-            "APIS": "DELETE /api/SAPIDOSYSTEM/1.5/my/CommonUse/SAPIDOSYSTEMgroup",
+            "APIS": "DELETE /api/VUESYSTEM/1.5/my/CommonUse/VUESYSTEMgroup",
             "OperationTime": "0.033",
             "Response": "ok",
             "BytesTransferred": 76,
@@ -3884,7 +3884,7 @@ def transitionDB_commonuse_get_tableschema(SYSTEM,tableName):
         "API_path_parameters":{"SYSTEM":"合法的系統名稱","tableName":"資料表名稱"},
         "API_message_parameters":{"DB":"string","Table":"string","schemaList":"array"},
         "API_example":{
-            "APIS": "POST /api/SAPIDOSYSTEM/1.0/my/CommonUse/Schema/user",
+            "APIS": "POST /api/VUESYSTEM/1.0/my/CommonUse/Schema/user",
             "OperationTime": "0.033",
             "Response": "ok",
             "BytesTransferred": 76,
@@ -3995,7 +3995,7 @@ def transitionDB_commonuse_backup_mysql_table(SYSTEM,tableName):
         "API_path_parameters":{"SYSTEM":"合法的系統名稱","tableName":"資料表名稱"},
         "API_message_parameters":{"Table":"string","DB":"string","backupYear":"string"},
         "API_example":{
-            "APIS": " GET /api/SAPIDOSYSTEM/1.0/my/CommonUse/BackUp/user",
+            "APIS": " GET /api/VUESYSTEM/1.0/my/CommonUse/BackUp/user",
             "BytesTransferred": 523,
             "OperationTime":"0.014",
             "Response": "ok",
@@ -4118,7 +4118,7 @@ def transitionDB_commonuse_get_mysql_backupdata(SYSTEM,sqlfilename):
         "API_parameters":{"uid":"使用者帳號","quarter":"季(範圍:正整數0~4，0為整年資料)"},
         "API_message_parameters":{"DB":"string","backupfile":"string","backupData":"JSON","quarter":"string"},
         "API_example":{
-            "APIS": " GET /api/SAPIDOSYSTEM/1.0/my/CommonUse/BackUpData/workorder_2019",
+            "APIS": " GET /api/VUESYSTEM/1.0/my/CommonUse/BackUpData/workorder_2019",
             "BytesTransferred": 523,
             "OperationTime":"0.014",
             "Response": "ok",

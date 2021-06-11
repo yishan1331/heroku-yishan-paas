@@ -29,7 +29,7 @@ from app.modules import *
 
 __all__ = ('EMAIL_API', 'check_todolist_deadline')
 
-ACCESS_SYSTEM_LIST = ["SAPIDOSYSTEM","CHUNZU"]
+ACCESS_SYSTEM_LIST = ["SAPIDOSYSTEM","CHUNZU","YS"]
 
 #blueprint
 EMAIL_API = Blueprint('EMAIL_API', __name__)
@@ -207,7 +207,7 @@ def check_todolist_deadline():
     err_msg = "error"
     dicRet = appPaaS.preProcessRequest(request,system="PaaS")
     try:
-        DbSession,metadata,engine= appPaaS.getDbSessionType(system="SAPIDOSYSTEM")
+        DbSession,metadata,engine= appPaaS.getDbSessionType(system="YS")
         if DbSession is None:
             #表示連接資料庫有問題
             raise Exception(engine)

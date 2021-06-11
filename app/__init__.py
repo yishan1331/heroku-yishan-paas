@@ -51,7 +51,7 @@ def create_app():
     from flask_bootstrap import Bootstrap
 
     FRONTEND_FOLDER = os.path.join(os.getcwd(),'dashboard')
-    appPaaS = Flask('sapidoPaaS',template_folder=FRONTEND_FOLDER,static_folder=os.path.join(FRONTEND_FOLDER,'static'))
+    appPaaS = Flask('appPaaS',template_folder=FRONTEND_FOLDER,static_folder=os.path.join(FRONTEND_FOLDER,'static'))
 
     CORS(appPaaS,cors_allowed_origins="*")  
     socketio = SocketIO(appPaaS,cors_allowed_origins="*")
@@ -310,7 +310,6 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
         print dbUri
         if echo:
             dbEngine = create_engine(dbUri,encoding='utf-8',echo=True)
-            # dbEngine = create_engine('mssql+pymssql://sd:DmakerSQL@2020@172.16.2.57:1433/sapidoERP?charset=utf8',encoding='utf-8',echo=True)
         else:
             dbEngine = create_engine(dbUri,encoding='utf-8')
         

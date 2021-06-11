@@ -50,7 +50,7 @@ class RegularExpression():
         self.data = data
         #一次過濾所有標點符號 https://juejin.im/post/5d50c132f265da03de3af40b
         #return re.sub('\W+', '', self.data).replace("_", '')
-        #過濾常見標點符號，逗號","不過濾(SAPIDOSYSTEM需求) https://blog.csdn.net/Dongfnag_HU/article/details/85076819
+        #過濾常見標點符號，逗號","不過濾(VUESYSTEM需求) https://blog.csdn.net/Dongfnag_HU/article/details/85076819
         #reexp = '!;:?"\'#$%&()*+\\/\\\<=>@^_`\[\]{|}~-' 
         self.reexp = '!;:?"\'#$%&*\\\<=>@^`\[\]{|}~'
 
@@ -1681,9 +1681,9 @@ def retrieve_database_exist(system, dbName="", forRawData="mysql", _appPaaS=None
         thisDB = globalvar.DBCONFIG[forRawData.upper()]
         dbName = dicConfig.get(thisDB+"Dbname_"+system)
         # if forRawData == "mysql":
-        #     dbName = appPaaS.dicConfig.get("dbiMgmDbEntity_SAPIDOSYSTEM")
+        #     dbName = appPaaS.dicConfig.get("dbiMgmDbEntity_VUESYSTEM")
         # elif forRawData == "mssql":
-        #     dbName = appPaaS.dicConfig.get("dbiMssqlDbEntity_SAPIDOSYSTEM")
+        #     dbName = appPaaS.dicConfig.get("dbiMssqlDbEntity_VUESYSTEM")
     if _appPaaS is None:_appPaaS = appPaaS
     try:
         DbSession,metadata,engine = _appPaaS.getDbSessionType(dbName=dbName, forRawData=forRawData, system=system)

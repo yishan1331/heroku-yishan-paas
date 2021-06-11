@@ -147,9 +147,9 @@ thread.start_new_thread(check_Lic, (43200, ))
 @appPaaS.route("/")
 def homePage():
     dicRet = appPaaS.preProcessRequest(request, system="PaaS")
-    mesg = "<h1 style='color:blue'>sapido-License check failed!</h1>"
+    mesg = "<h1 style='color:blue'>License check failed!</h1>"
     if appPaaS.licCheck == 0:
-        mesg = "<h1 style='color:blue'>sapido-PaaS!</h1>"
+        mesg = "<h1 style='color:blue'>PaaS!</h1>"
 
     dicRet["message"] = mesg   
     dicRet["Response"] = "ok"
@@ -162,7 +162,7 @@ def homePage():
 @appPaaS.route("/test")
 def test():
     dicRet = {}
-    mesg = "<h1 style='color:blue'>sapido-PaaS!</h1>"
+    mesg = "<h1 style='color:blue'>PaaS!</h1>"
 
     dicRet["message"] = mesg   
     dicRet["Response"] = "ok"
@@ -564,7 +564,7 @@ def paas_dashboard():
     #     return "Not Found"
     # return render_template('index.html')
     return render_template("index.html")
-    # return render_template('index.html',api_map=api_map(0,"SAPIDOSYSTEM"))
+    # return render_template('index.html',api_map=api_map(0,"VUESYSTEM"))
 #}}}
 
 #=======================================================

@@ -13,7 +13,7 @@ Filename: userHandle.py
 Description: 
 
 Total = 3 APIs
-* wei@03272018 add an API(/api/SAPIDOSYSTEM/query/tableData): to retrieve all data in a table
+* wei@03272018 add an API(/api/VUESYSTEM/query/tableData): to retrieve all data in a table
 ==============================================================================
 """
 
@@ -41,7 +41,7 @@ from app.dbModel.sapidosystem import User as sapidosystem_User
 from app.dbModel.iot import User as iot_User
 # }}}
 
-ACCESS_SYSTEM_LIST = ["SAPIDOSYSTEM","IOT","CHUNZU"]
+ACCESS_SYSTEM_LIST = ["SAPIDOSYSTEM","IOT","CHUNZU","YS"]
 
 #blueprint
 USER_API = Blueprint('USER_API', __name__)
@@ -143,7 +143,7 @@ def MYSQL_reg_User(SYSTEM):
         },
         "API_message_parameters":{"uid":"string","DB":"string"},
         "API_example":{
-            "APIS": "POST /api/SAPIDOSYSTEM/1.0/my/user/reg_User",
+            "APIS": "POST /api/VUESYSTEM/1.0/my/user/reg_User",
             "OperationTime": "0.033",
             "Response": "ok",
             "BytesTransferred": 76,
@@ -157,7 +157,7 @@ def MYSQL_reg_User(SYSTEM):
     # method=POST a user 
     # wei@03152017 temporarily disable
     # for uid & pwd string checking
-    # dicRet = appPaaS.preProcessRequest(request,system="SAPIDOSYSTEM")
+    # dicRet = appPaaS.preProcessRequest(request,system="VUESYSTEM")
     #-----------------------------------------------------------
     err_msg = "error"
     dicRet = appPaaS.preProcessRequest(request,system=SYSTEM)
@@ -318,7 +318,7 @@ def MYSQL_update_User(SYSTEM):
         },
         "API_message_parameters":{"userID":"string","userName":"string","DB":"string"},
         "API_example":{
-            "APIS": "PATCH /api/SAPIDOSYSTEM/1.0/my/user/update_User",
+            "APIS": "PATCH /api/VUESYSTEM/1.0/my/user/update_User",
             "OperationTime": "0.033",
             "Response": "ok",
             "BytesTransferred": 76,
@@ -481,7 +481,7 @@ def MYSQL_delete_a_user(SYSTEM):
         },
         "API_message_parameters":{"userID":"string","DB":"string"},
         "API_example":{
-            "APIS": "DELETE /api/SAPIDOSYSTEM/1.0/my/user/delete_User",
+            "APIS": "DELETE /api/VUESYSTEM/1.0/my/user/delete_User",
             "OperationTime": "0.021",
             "Response": "ok",
             "BytesTransferred": 683,

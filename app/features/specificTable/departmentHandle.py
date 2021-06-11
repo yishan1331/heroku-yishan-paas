@@ -38,7 +38,7 @@ from app.modules import *
 from app.dbModel.sapidosystem import Department,genRawDBName
 #}}}
 
-ACCESS_SYSTEM_LIST = ["SAPIDOSYSTEM"]
+ACCESS_SYSTEM_LIST = ["SAPIDOSYSTEM","YS"]
 
 #blueprint
 DEPARTMENT_API = Blueprint('DEPARTMENT_API', __name__)
@@ -118,7 +118,7 @@ def MYSQL_reg_Department(SYSTEM):
             "DB":"string"
         },
         "API_example":{
-            "APIS": "POST /api/SAPIDOSYSTEM/1.0/my/department/registerDep",
+            "APIS": "POST /api/VUESYSTEM/1.0/my/department/registerDep",
             "OperationTime": "2.421",
             "BytesTransferred": 128,
             "Response": "ok",
@@ -266,7 +266,7 @@ def MYSQL_update_Department(SYSTEM):
         },
         "API_message_parameters":{"depID":"string"},
         "API_example":{
-            "APIS": "PATCH /api/SAPIDOSYSTEM/1.0/my/department/update_Department",
+            "APIS": "PATCH /api/VUESYSTEM/1.0/my/department/update_Department",
             "OperationTime": "2.421",
             "BytesTransferred": 128,
             "Response": "ok",

@@ -1,7 +1,6 @@
 #assign app from sessionMgr
 print "-----into spdpaas.py-----"
 from app import *
-appSapido = appPaaS
 import app.apiPortal
 
 # if __name__ == "__main__":

@@ -40,7 +40,7 @@ from app.dbModel.iot import Sensor
 
 __all__ = ('SENSOR_API', 'retrieve_table')
 
-ACCESS_SYSTEM_LIST = ["IOT","CHUNZU"]
+ACCESS_SYSTEM_LIST = ["IOT","CHUNZU","YS"]
 
 #blueprint
 SENSOR_API = Blueprint('SENSOR_API', __name__)

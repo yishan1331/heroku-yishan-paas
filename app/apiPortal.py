@@ -286,10 +286,6 @@ def per_request_postprocess(Response):
     #    return Response
     try:
         dicRet = json.loads(Response.data)
-        #wei@05022017 for CORS
-        Response.headers.set('Access-Control-Allow-Origin', '*')
-        #Response.headers['Access-Control-Allow-Credentials'] = 'true'
-        Response.headers.set('Access-Control-Allow-Methods', 'POST, OPTIONS, GET, DELETE')
 
         nowTime = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[::]
 

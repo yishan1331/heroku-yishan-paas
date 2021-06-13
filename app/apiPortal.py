@@ -251,7 +251,7 @@ def per_request_preprocess():
         Response = make_response(json.dumps(dicRet))
         Response.headers.set('Access-Control-Allow-Origin', '*')
         Response.headers['Access-Control-Allow-Credentials'] = 'true'
-        Response.headers.set('Access-Control-Allow-Methods', 'POST, OPTIONS, GET, DELETE')
+        Response.headers.set('Access-Control-Allow-Methods', 'POST, OPTIONS, GET, DELETE, PATCH, PUT')
         #wei@04282017 for LAN design
         Response.headers.set('Access-Control-Allow-Headers',
         request.headers.get('Access-Control-Request-Headers', 'Authorization' ))

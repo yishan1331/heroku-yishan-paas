@@ -53,8 +53,8 @@ def create_app():
     FRONTEND_FOLDER = os.path.join(os.getcwd(),'dashboard')
     appPaaS = Flask('appPaaS',template_folder=FRONTEND_FOLDER,static_folder=os.path.join(FRONTEND_FOLDER,'static'))
 
-    # CORS(appPaaS,cors_allowed_origins="*")  
     CORS(appPaaS, resources={r"/api/*": {"origins": "*"}})
+    
     socketio = SocketIO(appPaaS,cors_allowed_origins="*")
     # socketio.init_app(appPaaS,cors_allowed_origins="*")
 

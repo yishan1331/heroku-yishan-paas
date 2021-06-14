@@ -536,8 +536,8 @@ def MYSQL_delete_a_user(SYSTEM):
                     filter(iot_User.user_id == func.binary(del_userID)).  \
                     all()
 
-        if len(queryRecs) != 0:
-            dicRet["Response"] = "Error: user id : '{}' existed".format(del_userID)
+        if len(queryRecs) == 0:
+            dicRet["Response"] = "Error: user id : '{}' doesn't existed".format(del_userID)
             return jsonify( **dicRet)
 
         if globalvar.MYSQL_USER_ID[globalvar.SERVERIP] == "uID":

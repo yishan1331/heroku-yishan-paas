@@ -50,7 +50,7 @@ def create_app():
     from flask_socketio import SocketIO
     from flask_bootstrap import Bootstrap
 
-    FRONTEND_FOLDER = os.path.join(os.getcwd(),'dashboard')
+    FRONTEND_FOLDER = os.path.join(os.getcwd(),'templates')
     appPaaS = Flask('appPaaS',template_folder=FRONTEND_FOLDER,static_folder=os.path.join(FRONTEND_FOLDER,'static'))
 
     CORS(appPaaS, resources={r"/api/*": {"origins": "*"}})

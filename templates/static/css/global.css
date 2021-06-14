@@ -1,0 +1,7 @@
+html,
+body {
+	height: 100%;
+}
+.sidebar_popover {
+	/* transform: translateX(48px) !important; */
+}

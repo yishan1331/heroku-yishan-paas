@@ -1,0 +1,32 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}404 Not Found{% endblock %}
+
+{% block styles %}
+{{ super() }}
+<style>
+    h1{
+        display: block;
+        /* font-size: 2em; */
+        margin-block-start: 0.67em;
+        margin-block-end: 0.67em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+        margin: 0.3em;
+    }
+    p{
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        margin: 0.7em;
+        font-size: 18px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1>TEST Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+{% endblock %}

@@ -478,11 +478,10 @@ def transitionDB_commonuse_get_multi_rows_interval(SYSTEM,tableID):
 
         for row in sql:
             drow = AdjustDataFormat().format(row._asdict())
+            if tableName == "user":
+                catchuID = str(drow[globalvar.MYSQL_USER_ID[globalvar.SERVERIP]])
             for key,value in drow.items():
-                if tableName == "user":
-                    if key == globalvar.MYSQL_USER_ID[globalvar.SERVERIP]:
-                        catchuID = str(value)
-                if key=="pwd": #for user to AES_DECRYPT pwd
+                if key == "pwd": #for user to AES_DECRYPT pwd
                     AES_IV = catchuID
                     AES = Prpcrypt(dicConfig.get('aes_key'), AES_IV, SYSTEM)
                     status,de_result = AES.decrypt(value)

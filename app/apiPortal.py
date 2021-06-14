@@ -353,11 +353,13 @@ def per_request_postprocess(Response):
         print request.path,Response.status_code,Response.status
         regexDict = {
             "APIDOC":r'edoc',
-            "DASHBOARD":r'dashboard'
+            "DASHBOARD":r'dashboard',
+            "static":r'static'
         }
         searchpathDict = {
             "APIDOC":False,
-            "DASHBOARD":False
+            "DASHBOARD":False,
+            "static":False
         }
         if Response.status != "404 NOT FOUND":
             for logtype in regexDict.keys():
@@ -369,7 +371,7 @@ def per_request_postprocess(Response):
             # print searchpathDict
             searchPath_faviconico = re.search(r'favicon.ico',request.path) #排除favicon.ico
             if searchPath_faviconico is None:
-                if not (searchpathDict["APIDOC"] or searchpathDict["DASHBOARD"]):
+                if not (True in searchpathDict.values()):
                 # if not searchPath_apidoc:
                     strExcInfo = "'{} {}' exception\n".format(request.method, request.path)
                     strExcInfo += "resp data: {}\n".format(Response.data)

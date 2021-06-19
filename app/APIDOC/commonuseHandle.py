@@ -60,7 +60,7 @@ def commonuse_get_time():
     '''
     #}}}
     err_msg = "ok"
-    dicRet = appPaaS.preProcessRequest(request,system="APIDOC")
+    dicRet = appPaaS.preProcessRequest(request,system="YS")
     #if(reUser_id in "AceMoriKTGH"):
     err_msg = dicRet["Response"]
     try:
@@ -108,7 +108,7 @@ def commonuse_get_tabledata():
     '''
     #}}}
     err_msg = "ok"
-    dicRet = appPaaS.preProcessRequest(request,system="APIDOC")
+    dicRet = appPaaS.preProcessRequest(request,system="YS")
     #---------------------------------------------------------
     #Wei@03092017 adding the if-else for user check
     #For runnable version, the uid check for administor 
@@ -135,7 +135,7 @@ def commonuse_get_tabledata():
 
     recList = []
     try:
-        DbSession,metadata,engine= appPaaS.getDbSessionType(system="APIDOC")
+        DbSession,metadata,engine= appPaaS.getDbSessionType(system="YS")
         if DbSession is None:
             #表示連接資料庫有問題
             dicRet["Response"] = engine
@@ -223,7 +223,7 @@ def commonuse_get_multi_rows_interval(tableID):
     '''
     #}}}
     err_msg = "ok"
-    dicRet = appPaaS.preProcessRequest(request,system="APIDOC")
+    dicRet = appPaaS.preProcessRequest(request,system="YS")
     #---------------------------------------------------------
     #Wei@03092017 adding the if-else for user check
     #For runnable version, the uid check for administor 
@@ -256,7 +256,7 @@ def commonuse_get_multi_rows_interval(tableID):
 
     recList = []
     try:
-        DbSession,metadata,engine= appPaaS.getDbSessionType(system="APIDOC")
+        DbSession,metadata,engine= appPaaS.getDbSessionType(system="YS")
         if DbSession is None:
             #表示連接資料庫有問題
             dicRet["Response"] = engine
@@ -347,7 +347,7 @@ def commonuse_get_sqlsyntax(tableName):
     }
     '''
     #}}}
-    dicRet = appPaaS.preProcessRequest(request,system="APIDOC")
+    dicRet = appPaaS.preProcessRequest(request,system="YS")
     #---------------------------------------------------------
     #Wei@03092017 adding the if-else for user check
     #For runnable version, the uid check for administor 
@@ -415,7 +415,7 @@ def commonuse_get_sqlsyntax(tableName):
 
     recList = []
     try:
-        DbSession,metadata,engine= appPaaS.getDbSessionType(system="APIDOC")
+        DbSession,metadata,engine= appPaaS.getDbSessionType(system="YS")
         if DbSession is None:
             #表示連接資料庫有問題
             dicRet["Response"] = engine
@@ -955,7 +955,7 @@ def commonuse_get_sqlsyntax_():
     '''
     #}}}
     err_msg = "error"
-    dicRet = appPaaS.preProcessRequest(request,system="APIDOC")
+    dicRet = appPaaS.preProcessRequest(request,system="YS")
     #---------------------------------------------------------
     #Wei@03092017 adding the if-else for user check
     #For runnable version, the uid check for administor 
@@ -989,7 +989,7 @@ def commonuse_get_sqlsyntax_():
         return jsonify( **dicRet)
     
     try:
-        DbSession,metadata,engine= appPaaS.getDbSessionType(system="APIDOC")
+        DbSession,metadata,engine= appPaaS.getDbSessionType(system="YS")
         if DbSession is None:
             #表示連接資料庫有問題
             dicRet["Response"] = engine
@@ -1071,7 +1071,7 @@ def commonuse_get_sqlsyntax_joinmultitable():
     '''
     #}}}
     err_msg = "ok"
-    dicRet = appPaaS.preProcessRequest(request,system="APIDOC")
+    dicRet = appPaaS.preProcessRequest(request,system="YS")
     #---------------------------------------------------------
     #Wei@03092017 adding the if-else for user check
     #For runnable version, the uid check for administor 
@@ -1140,7 +1140,7 @@ def commonuse_get_sqlsyntax_joinmultitable():
 
     recList = []
     try:
-        DbSession,metadata,engine= appPaaS.getDbSessionType(system="APIDOC")
+        DbSession,metadata,engine= appPaaS.getDbSessionType(system="YS")
         if DbSession is None:
             #表示連接資料庫有問題
             dicRet["Response"] = engine
@@ -1266,7 +1266,7 @@ def commonuse_get_sqlsyntax_joinmultitable():
             return jsonify( **dicRet)
 
         for i in join[join.keys()[0]]:
-            response, msg, key, value = adjust_dict_for_joinapi(metadata=metadata,tables=tables,masterKey=joinkeyList0,data=i,joinkeyList=joinkeyList,joincolumnList=joincolumnList,system="APIDOC")
+            response, msg, key, value = adjust_dict_for_joinapi(metadata=metadata,tables=tables,masterKey=joinkeyList0,data=i,joinkeyList=joinkeyList,joincolumnList=joincolumnList,system="YS")
             if not response:
                 dicRet["Response"] = msg
                 return jsonify( **dicRet)
@@ -1679,7 +1679,7 @@ def commonuse_get_sqlsyntax_joinmultitable_():
     '''
     #}}}
     err_msg = "ok"
-    dicRet = appPaaS.preProcessRequest(request,system="APIDOC")
+    dicRet = appPaaS.preProcessRequest(request,system="YS")
     #---------------------------------------------------------
     #Wei@03092017 adding the if-else for user check
     #For runnable version, the uid check for administor 
@@ -1713,7 +1713,7 @@ def commonuse_get_sqlsyntax_joinmultitable_():
 
     recList = []
     try:
-        DbSession,metadata,engine= appPaaS.getDbSessionType(system="APIDOC")
+        DbSession,metadata,engine= appPaaS.getDbSessionType(system="YS")
         if DbSession is None:
             #表示連接資料庫有問題
             dicRet["Response"] = engine
@@ -1774,7 +1774,7 @@ def commonuse_register(tableName):
     '''
     #}}}
     dicRet = {}
-    dicRet = appPaaS.preProcessRequest(request,system="APIDOC")
+    dicRet = appPaaS.preProcessRequest(request,system="YS")
 
     uri_parameter = ["uid"]
     result, result_msg = check_uri_parameter_exist(request,uri_parameter)
@@ -1791,7 +1791,7 @@ def commonuse_register(tableName):
     insertstatusmsg = ""
 
     try:
-        DbSession,metadata,engine= appPaaS.getDbSessionType(system="APIDOC")
+        DbSession,metadata,engine= appPaaS.getDbSessionType(system="YS")
         if DbSession is None:
             #表示連接資料庫有問題
             dicRet["Response"] = engine
@@ -1948,7 +1948,7 @@ def commonuse_update(tableName):
     '''
     #}}}
     dicRet = {}
-    dicRet = appPaaS.preProcessRequest(request,system="APIDOC")
+    dicRet = appPaaS.preProcessRequest(request,system="YS")
 
     uri_parameter = ["uid"]
     result, result_msg = check_uri_parameter_exist(request,uri_parameter)
@@ -1965,7 +1965,7 @@ def commonuse_update(tableName):
     updatestatusmsg = ""
 
     try:
-        DbSession,metadata,engine= appPaaS.getDbSessionType(system="APIDOC")
+        DbSession,metadata,engine= appPaaS.getDbSessionType(system="YS")
         if DbSession is None:
             #表示連接資料庫有問題
             dicRet["Response"] = engine
@@ -2115,7 +2115,7 @@ def commonuse_delete(tableName):
     '''
     #}}}
     dicRet = {}
-    dicRet = appPaaS.preProcessRequest(request,system="APIDOC")
+    dicRet = appPaaS.preProcessRequest(request,system="YS")
 
     uri_parameter = ["uid"]
     result, result_msg = check_uri_parameter_exist(request,uri_parameter)
@@ -2132,7 +2132,7 @@ def commonuse_delete(tableName):
     deletestatusmsg = ""
 
     try:
-        DbSession,metadata,engine= appPaaS.getDbSessionType(system="APIDOC")
+        DbSession,metadata,engine= appPaaS.getDbSessionType(system="YS")
         if DbSession is None:
             #表示連接資料庫有問題
             dicRet["Response"] = engine
@@ -2274,7 +2274,7 @@ def commonuse_get_tableschema(tableName):
     '''
     #}}}
     dicRet = {}
-    dicRet = appPaaS.preProcessRequest(request,system="APIDOC")
+    dicRet = appPaaS.preProcessRequest(request,system="YS")
 
     uri_parameter = ["uid"]
     result, result_msg = check_uri_parameter_exist(request,uri_parameter)
@@ -2283,7 +2283,7 @@ def commonuse_get_tableschema(tableName):
         return jsonify( **dicRet)
 
     try:
-        DbSession,metadata,engine= appPaaS.getDbSessionType(system="APIDOC")
+        DbSession,metadata,engine= appPaaS.getDbSessionType(system="YS")
         if DbSession is None:
             #表示連接資料庫有問題
             dicRet["Response"] = engine

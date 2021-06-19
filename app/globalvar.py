@@ -72,7 +72,8 @@ MYSQL_USER_ID = {
 }
 
 #logging模組要查看的log file列表
-LOGFILELIST = {"uWSGI_LOG":{"filename":"spdpaas_uwsgi.log","path":"/var/log/uwsgi/"},"PaaS_LOG":{"filename":"log_sapidoPaaS","path":"/var/www/spdpaas/log/"}}
+# LOGFILELIST = {"uWSGI_LOG":{"filename":"spdpaas_uwsgi.log","path":"/var/log/uwsgi/"},"PaaS_LOG":{"filename":"log_sapidoPaaS","path":"/var/www/spdpaas/log/"}}
+LOGFILELIST = {"PaaS_LOG":{"filename":"log_sapidoPaaS","path":"/var/www/spdpaas/log/"}}
 
 #SqlSyntax api的條件參數
 SQLSYNTAX_PARAMETER = {"table":str,"fields":list,"where":dict,"orderby":list,"limit":list,"symbols":dict,"intervaltime":dict,"subquery":dict,"union":list}

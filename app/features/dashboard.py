@@ -88,6 +88,8 @@ def get_logtype(SYSTEM):
                 
                 metaRaw.reflect()
                 tableList = ConvertData().convert(metaRaw.tables.keys())
+                print "~~~tableList~~~"
+                print tableList
                 for i in tableList:
                     if re.search(r'^'+SYSTEM.lower(),i):
                         print "~~~i~~~"

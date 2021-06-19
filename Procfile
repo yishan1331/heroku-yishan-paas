@@ -1,1 +1,1 @@
-web: gunicorn spdpaas:appPaaS --log-file -
+web: gunicorn -k spdpaas:appPaaS --log-file -

@@ -60,7 +60,7 @@ def _file_content_list_iter(file):
 @DASHBOARD_API.route('/api/PaaS/1.0/sysps/LogType/<SYSTEM>', methods=['GET'])
 def get_logtype(SYSTEM):
     err_msg = "error"
-    dicRet = appPaaS.preProcessRequest(request,system="PaaS")
+    dicRet = appPaaS.preProcessRequest(request,system=SYSTEM)
 
     print '~~~~request.args.get("GetLogFilesList")~~~~'
     print request.args.get("GetLogFilesList")
@@ -80,7 +80,7 @@ def get_logtype(SYSTEM):
         for key,value in globalvar.LOGFILELIST.items():
             FileList[key] = []
             if key == "PaaS_LOG":
-                DbSessionRaw,metaRaw,engineRaw = appPaaS.getDbSessionType(dbName=globalvar.PAAS_DASHBOARD_DBNAME["POSTGRES"],forRawData="postgres",system="PaaS")
+                DbSessionRaw,metaRaw,engineRaw = appPaaS.getDbSessionType(dbName=globalvar.PAAS_DASHBOARD_DBNAME["POSTGRES"],forRawData="postgres",system=SYSTEM)
                 if DbSessionRaw is None:
                     #表示連接資料庫有問題
                     dicRet["Response"] = engineRaw
@@ -109,7 +109,7 @@ def get_logtype(SYSTEM):
         dicRet["FileList"] = FileList
 
     except Exception as e:
-        err_msg = appPaaS.catch_exception(e,sys.exc_info(),"PaaS")
+        err_msg = appPaaS.catch_exception(e,sys.exc_info(),SYSTEM)
 
     finally:
         if 'DbSessionRaw' in locals().keys() and DbSessionRaw is not None:

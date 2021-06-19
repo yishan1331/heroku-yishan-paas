@@ -159,15 +159,14 @@ def homePage():
 #=======================================================
 
 
-@appPaaS.route("/test")
+@appPaaS.route("/testerror")
 def test():
-    dicRet = {}
-    mesg = "<h1 style='color:blue'>PaaS!</h1>"
+    try:
+        raise Exception("test error")
+    except Exception as e:
+        appPaaS.catch_exception(e,sys.exc_info(),"YS")
 
-    dicRet["message"] = mesg   
     dicRet["Response"] = "ok"
-    print "$$$$$$dicRet$$$$$"
-    print dicRet
     return jsonify( **dicRet)
 
 #=======================================================

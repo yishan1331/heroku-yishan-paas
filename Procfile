@@ -1,1 +1,1 @@
-web: gunicorn spdpaas:appPaaS --log-file -
+web: gunicorn --worker-class eventlet spdpaas:appPaaS --log-file -

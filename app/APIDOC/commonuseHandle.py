@@ -61,12 +61,9 @@ def commonuse_get_time():
     #}}}
     err_msg = "ok"
     dicRet = appPaaS.preProcessRequest(request,system="YS")
-    #if(reUser_id in "AceMoriKTGH"):
-    err_msg = dicRet["Response"]
     try:
         dicRet['time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         err_msg = "ok" 
-    
     except Exception as e:
         err_msg = appPaaS.catch_exception(e,sys.exc_info(),"APIDOC")
 

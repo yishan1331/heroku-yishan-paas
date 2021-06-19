@@ -165,7 +165,7 @@ def connect():
         c = []
         import copy
         temp_systemList = copy.deepcopy(globalvar.SYSTEMLIST[globalvar.SERVERIP])
-        temp_systemList.remove("APIDOC")
+        # temp_systemList.remove("APIDOC")
         for i in globalvar.LOGFILELIST.keys():
             if i == "PaaS_LOG":
                 c = c+list(map(lambda x,y: x+"-"+y,[i]*len(temp_systemList),temp_systemList))

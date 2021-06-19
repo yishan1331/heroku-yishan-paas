@@ -166,6 +166,7 @@ def test():
     except Exception as e:
         appPaaS.catch_exception(e,sys.exc_info(),"YS")
 
+    dicRet = {}
     dicRet["Response"] = "ok"
     return jsonify( **dicRet)
 

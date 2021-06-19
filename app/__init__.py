@@ -313,7 +313,7 @@ def getDbSessionType(dbName="", forRawData="mysql", system=None, specified=1, dr
                                     bind=dbEngine))
 
         doLoggerHandler = True
-        if forRawData == 'postgres' and dbName == globalvar.PAAS_DASHBOARD_DBNAME["POSTGRES"]:
+        if forRawData == 'postgres' and dbName == globalvar.PAAS_DASHBOARD_DBNAME["POSTGRES"][system]:
             doLoggerHandler = False
             
         check_connect_success,check_result = check_dbconnect_success(dbSessionType(), system, doLoggerHandler=doLoggerHandler)

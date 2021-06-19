@@ -46,8 +46,8 @@ class GetImmediateLoggingFile():
             #print '"globalvar.LOGFILELIST[self.filename]["path"]" -> {}'.format(globalvar.LOGFILELIST[self.filename.split("-")[0]]["path"])
             #print '"globalvar.LOGFILELIST[self.filename]["filename"]" -> {}'.format(globalvar.LOGFILELIST[self.filename.split("-")[0]]["filename"])
             thisfilepath = globalvar.LOGFILELIST[self.filename.split("-")[0]]["path"]+globalvar.LOGFILELIST[self.filename.split("-")[0]]["filename"]
-            if self.filename != "uWSGI_LOG":
-                thisfilepath = globalvar.LOGFILELIST[self.filename.split("-")[0]]["path"]+self.system+"/"+globalvar.LOGFILELIST[self.filename.split("-")[0]]["filename"]
+            # if self.filename != "uWSGI_LOG":
+            #     thisfilepath = globalvar.LOGFILELIST[self.filename.split("-")[0]]["path"]+self.system+"/"+globalvar.LOGFILELIST[self.filename.split("-")[0]]["filename"]
             #print '"thisfilepath" -> {}'.format(thisfilepath)
 
         global _monitorLogging
@@ -120,12 +120,12 @@ class GetImmediateLoggingFile():
                 self.work()
             else:
                 try:
-                    DbSessionRaw,metaRaw,engineRaw = appPaaS.getDbSessionType(system="PaaS",dbName=globalvar.PAAS_DASHBOARD_DBNAME["POSTGRES"],forRawData="postgres")
+                    DbSessionRaw,metaRaw,engineRaw = appPaaS.getDbSessionType(system=self.system,dbName=globalvar.PAAS_DASHBOARD_DBNAME["POSTGRES"][self.system],forRawData="postgres")
                     if DbSessionRaw is not None:
                         sessRaw = DbSessionRaw()
                         self.work({"sess":sessRaw,"meta":metaRaw})
                 except Exception as e:
-                    err_msg = appPaaS.catch_exception(e,sys.exc_info(),"PaaS")
+                    err_msg = appPaaS.catch_exception(e,sys.exc_info(),self.system)
                 finally:
                     if DbSessionRaw is not None:
                         print "@@@@@@@@@@@@@"

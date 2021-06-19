@@ -33,7 +33,10 @@ CONTAINER_API_HTML = "API"
 
 PAAS_DASHBOARD_DBNAME = {
     "MYSQL":"w4gs1cezebsazytb",
-    "POSTGRES":"de1rijvqmjhsgr",
+    "POSTGRES":{
+        "PaaS":"de1rijvqmjhsgr",
+        "YS":"dei54efj3k805c"
+    }
 }
 #------------------------------------------------------
 #Wei@10022018 adding the if-else for customer check

@@ -122,17 +122,6 @@ def _readConfig():
         DBREDISPort_PaaS = FILECONFIG.get("Redis_PaaS",'port')
         DBREDISPassword_PaaS = FILECONFIG.get("Redis_PaaS",'password')
 
-        # #Email feature
-        try:
-            #Yishan@10272020 get office 365 mail server user,password
-            EmailHost = CONFIG.get('Email', 'host')
-            EmailUser = CONFIG.get('Email', 'user')
-            EmailPassword = CONFIG.get('Email', 'password')
-        except ConfigParser.NoSectionError: #https://www.programcreek.com/python/example/1658/ConfigParser.NoSectionError
-            EmailHost = None
-            EmailUser = None
-            EmailPassword = None
-        
         #Yishan@08072019 修改抓取資料庫基本資料方式
         repeatconfig = ["ip","port","user","password","dbname"]
         diff_system = {}

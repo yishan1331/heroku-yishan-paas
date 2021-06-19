@@ -56,7 +56,7 @@ def create_app():
     appPaaS = Flask('appPaaS',template_folder=FRONTEND_FOLDER,static_folder=os.path.join(FRONTEND_FOLDER,'static'))
 
     CORS(appPaaS, resources={r"/api/*": {"origins": "*"}})
-    socketio = SocketIO(appPaaS,cors_allowed_origins="https://yishan-paas.herokuapp.com")
+    socketio = SocketIO(appPaaS,cors_allowed_origins="https://yishan-paas.herokuapp.com", logger=True, engineio_logger=True)
     # socketio.init_app(appPaaS,cors_allowed_origins="*")
 
     Bootstrap(appPaaS)

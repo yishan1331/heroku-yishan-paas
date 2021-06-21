@@ -57,7 +57,8 @@ def create_app():
 
     CORS(appPaaS, resources={r"/*": {"origins": "*"}})
     # socketio = SocketIO(appPaaS,cors_allowed_origins="https://yishan-paas.herokuapp.com", logger=True, engineio_logger=True)
-    socketio.init_app(appPaaS,cors_allowed_origins="*")
+    socketio = SocketIO(appPaaS,cors_allowed_origins="*", logger=True, engineio_logger=True)
+    # socketio.init_app(appPaaS,cors_allowed_origins="*")
 
     Bootstrap(appPaaS)
 
